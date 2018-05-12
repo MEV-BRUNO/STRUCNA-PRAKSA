@@ -6,27 +6,31 @@ using System.Web.Mvc;
 
 namespace Strucna.Controllers
 {
-    public class HomeController : Controller
+    public class LoginController : Controller
     {
-        public ActionResult Index()
+        // GET: Login
+        public ActionResult lozinka()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+           
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult reg()
         {
-            ViewBag.Message = "Your contact page.";
+            
 
             return View();
         }
 
-      
+
+        public ActionResult login()
+        {
+            
+
+            return View();
+        }
+
+
     }
 }
