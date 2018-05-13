@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="~/Style/StyleSheet1.css" rel="stylesheet" />
+    <link href="~/css/StyleSheet1.css" rel="stylesheet" />
     <title>Prijava</title>
 </head>
 
@@ -21,7 +21,11 @@
 
 
             <div class="form-group">
-                <h1 style="text-align: center;"><div class="h1" >PAUP </div><div class="h12">projekt</div></h1>
+                 
+                      <a href='@Url.Action("Index","Home")' >
+                            <img src="~/assets/img/logo.png" class="center-block" alt="" />
+                       </a> 
+             
                 <div class="margina">
                     <form method="post" action="index_admin.html">
                         <p class="well well-sm" style="background: #0d70b7; color:white; text-align: center; ">Vaše korisničko ime i lozinka</p>
