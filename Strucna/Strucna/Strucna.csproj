@@ -2214,6 +2214,19 @@
     <Content Include="Views\Login\lozinka.cshtml" />
     <Content Include="Views\Login\login.cshtml" />
     <Content Include="Views\Admin\index_admin.cshtml" />
+    <Content Include="Views\Admin\popis_mentora.cshtml" />
+    <Content Include="Views\Admin\popis_mentora_2.cshtml" />
+    <Content Include="Views\Admin\popis_mentora_detalji.cshtml" />
+    <Content Include="Views\Admin\popis_studijskih_programa.cshtml" />
+    <Content Include="Views\Admin\strucna_praksa.cshtml" />
+    <Content Include="Views\Admin\dnevnik_prakse.cshtml" />
+    <Content Include="Views\Admin\o_praksi.cshtml" />
+    <Content Include="Views\Admin\osobni_podaci.cshtml" />
+    <Content Include="Views\Admin\partial_mentor.cshtml" />
+    <Content Include="Views\Admin\partial_ostalo.cshtml" />
+    <Content Include="Views\Admin\prijava_studenta.cshtml" />
+    <Content Include="Views\Admin\poduzeca.cshtml" />
+    <Content Include="Views\Admin\dokumenti.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

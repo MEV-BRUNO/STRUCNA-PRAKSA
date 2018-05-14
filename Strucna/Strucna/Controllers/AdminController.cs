@@ -13,5 +13,60 @@ namespace Strucna.Controllers
         {
             return View();
         }
+
+        public ActionResult popis_mentora()
+        {
+            return View();
+        }
+
+        public ActionResult popis_mentora_2()
+        {
+            return View();
+        }
+
+        public ActionResult popis_mentora_detalji()
+        {
+            return View();
+        }
+
+        public ActionResult popis_studijskih_programa()
+        {
+            return View();
+        }
+        public ActionResult strucna_praksa()
+        {
+            return View();
+        }
+
+        public ActionResult dnevnik_prakse()
+        {
+            return View();
+        }
+
+        public ActionResult o_praksi()
+        {
+            return View();
+        }
+
+        public ActionResult osobni_podaci()
+        {
+            return View();
+        }
+
+        public ActionResult dokumenti()
+        {
+            return View();
+        }
+
+        public ActionResult poduzeca()
+        {
+            return View();
+        }
+
+        public ActionResult prijava_studenta()
+        {
+            return View();
+        }
+
     }
 }
