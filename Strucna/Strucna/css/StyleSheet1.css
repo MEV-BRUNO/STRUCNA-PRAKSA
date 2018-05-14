@@ -1,0 +1,30 @@
+﻿a:visited {
+    color: purple;
+}
+
+.margina {
+    margin-top: 35px;
+}
+
+
+
+a:active {
+    text-decoration: underline;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+.login {
+    margin-top: 10px;
+    float: left;
+}
+
+
+body{
+
+    margin-top:80px;
+
+
+}
