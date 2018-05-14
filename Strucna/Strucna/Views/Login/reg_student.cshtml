@@ -3,6 +3,8 @@
     Layout = null;
 }
 
+@using System.Web.Mvc;
+@model Strucna.Models.Student
 <!DOCTYPE html>
 
 <html>
@@ -27,15 +29,18 @@
                 </a>
 
                 <div class="margina">
-                    <form method="post" action="reg.html">
+                    <form method="post" action="">
                         <p class="well well-sm" style="background: #0d70b7; color:white; text-align: center; ">Ispunite podatke za registraciju</p>
-                        <p><input class="form-control" type="text" name="login" value="" placeholder="Ime"></p>
-                        <p><input class="form-control" type="text" name="password" value="" placeholder="Prezime"></p>
-                        <p><input class="form-control" type="text" name="password" value="" placeholder="Korisničko ime"></p>
-                        <p><input class="form-control" type="email" name="password" value="" placeholder="Vaša e-mail adresa"></p>
+                        <p><input class="form-control" type="text" name="ime_prezime" value="" placeholder="Ime i prezime"></p>
+                        <p><input class="form-control" type="text" name="adresa" value="" placeholder="Adresa"></p>
+                        <p><input class="form-control" type="text" name="mobitel" value="" placeholder="Mobitel"></p>
+                        <p><input class="form-control" type="email" name="email" value="" placeholder="Vaša e-mail adresa"></p>
                         <p><input class="form-control" type="password" name="password" value="" placeholder="Lozinka"></p>
-                        <p><input class="form-control" type="password" name="password" value="" placeholder="Ponovite lozinku"></p>
-
+                        <p><input class="form-control" type="password" name="repeatpassword" value="" placeholder="Ponovite lozinku"></p>
+                        <p>
+                            <input type="radio" name="redovni" value="Redovni"> Redovni<br>
+                            <input type="radio" name="redovni" value="Izvanredni"> Izvanredni<br>
+                        </p>
                         <button class="btn btn-success">Registracija</button>
 
                     </form>
@@ -50,12 +55,16 @@
                         <a href="login">Prijava  </a>
                     </div>
 
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                         <a href="lozinka">Zaboravio lozinku  </a>
                     </div>
 
                     <div class="col-sm-3">
-                        <a style="text-decoration: underline" href="#">Registracija  </a>
+                        <a href="reg_mentor">Registracija mentor </a>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <a style="text-decoration: underline" href="reg_student">Registracija student</a>
                     </div>
                 </div>
             </div>
