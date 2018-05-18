@@ -1,0 +1,98 @@
+﻿
+@{
+    Layout = null;
+}
+
+@using System.Web.Mvc;
+@model Strucna.Models.Student
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="~/css/StyleSheet1.css" rel="stylesheet" />
+    <title>Zaboravljena lozinka</title>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+
+            
+
+                <div class="form-group">
+                    <a href='@Url.Action("Index", "Home")'>
+                        <img src="~/assets/img/logo.png" class="center-block" alt="" />
+                    </a>
+                    <div class="margina">
+                        <form method="post" action="">
+                            <p class="well well-sm" style="background: #0d70b7; color:white; text-align: center; ">Ispunite podatke za registraciju</p>
+                            <p>
+                                @Html.LabelFor(model => model.ime_prezime, new { @class = "control-label" })
+                                @Html.EditorFor(model => model.ime_prezime, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ime_prezime, "", new { @class = "text-danger" })
+                            </p>
+                            <p>
+                                @Html.LabelFor(model => model.adresa, new { @class = "control-label" })
+                                @Html.EditorFor(model => model.adresa, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.adresa, "", new { @class = "text-danger" })
+                            </p>
+                            <p>
+                                @Html.LabelFor(model => model.mob, new { @class = "control-label" })
+                                @Html.EditorFor(model => model.mob, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.mob, "", new { @class = "text-danger" })
+                            </p>
+                            <p>
+                                @Html.LabelFor(model => model.email, new { @class = "control-label" })
+                                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                            </p>
+                            <p>
+                                @Html.LabelFor(model => model.lozinka, new { @class = "control-label" })
+                                @Html.PasswordFor(model => model.lozinka, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.lozinka, "", new { @class = "text-danger" })
+                            </p>
+                            <p>
+                                @Html.LabelFor(model => model.lozinka, new { @class = "control-label" })
+                                @Html.PasswordFor(model => model.lozinka, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.lozinka, "", new { @class = "text-danger" })
+                            </p>
+                            <p>
+                                <input type="radio" name="redovni" value="Redovni"> Redovni<br>
+                                <input type="radio" name="redovni" value="Izvanredni"> Izvanredni<br>
+                            </p>
+                            <button class="btn btn-success">Registracija</button>
+                        </form>
+                    </div>
+                </div>
+
+            
+
+                <div class="row">
+                    <div class="login" style="float:initial">
+                        <div class="col-sm-3">
+                            <a href="login">Prijava  </a>
+                        </div>
+                        <div class="col-sm-3">
+                            <a href="lozinka">Zaboravio lozinku  </a>
+                        </div>
+                        <div class="col-sm-3">
+                            <a href="reg_mentor">Registracija mentor </a>
+                        </div>
+                        <div class="col-sm-3">
+                            <a style="text-decoration: underline" href="reg_student">Registracija student</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        <div class="col-sm-4"></div>
+    </div>
+</body>
+
+</html>
+
