@@ -1,0 +1,73 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="~/css/StyleSheet1.css" rel="stylesheet" />
+    <title>Zaboravljena lozinka</title>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+
+
+            <div class="form-group">
+
+                <a href='@Url.Action("Index","Home")'>
+                    <img src="~/assets/img/logo.png" class="center-block" alt="" />
+                </a>
+
+                <div class="margina">
+                    <form method="post" action="lozinka.html">
+                        <p class="well well-sm" style="background: #0d70b7; color:white; text-align: center; ">Upišitive valjanu E-mail adresu</p>
+                        <p><input class="form-control" type="email" name="login" value="" placeholder="Vaša e-mail adresa"></p>
+                        <button class="btn btn-success">Obnova lozinke</button>
+
+
+
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="login" style="float:initial">
+
+                    <div class="col-sm-3">
+                        <a href="login">Prijava  </a>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <a style="text-decoration: underline" href="#">Zaboravio lozinku  </a>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <a href="reg_mentor">Registracija mentor </a>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <a  href="reg_student">Registracija student</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</body>
+
+</html>

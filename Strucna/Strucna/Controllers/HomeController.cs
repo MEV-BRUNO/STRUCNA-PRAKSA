@@ -26,5 +26,7 @@ namespace Strucna.Controllers
 
             return View();
         }
+
+      
     }
 }
