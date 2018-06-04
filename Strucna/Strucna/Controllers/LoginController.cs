@@ -19,6 +19,11 @@ namespace Strucna.Controllers
         }
 
 
+        public ActionResult AdminIndex()
+        {
+            return View();
+        }
+
         [HttpGet]
         public ActionResult reg_mentor()
         {
@@ -31,7 +36,17 @@ namespace Strucna.Controllers
         {
             if (ModelState.IsValid)
             {
+                foreach (Mentor mentor in baza.Mentori)
+                {
+                    if (m.email == mentor.email)
+                    {
+                       
 
+                        ViewBag.email = "Email se vec koristi";
+
+                        return View(m);
+                    }
+                }
                 baza.Mentori.Add(m);
                 baza.SaveChanges();
                 return RedirectToAction("login");
@@ -68,7 +83,7 @@ namespace Strucna.Controllers
                     return RedirectToAction("AdminIndex");
                 }
             }
-            return RedirectToAction("Prijava");
+            return RedirectToAction("login");
         }
     }
 }
