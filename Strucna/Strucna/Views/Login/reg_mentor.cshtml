@@ -41,7 +41,7 @@
                         </p>
                         <p>
                             @Html.LabelFor(model => model.email, new { @class = "control-label" })
-                            @ViewBag.email
+                            @ViewBag.email 
                             @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
 
