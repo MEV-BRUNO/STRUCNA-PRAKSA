@@ -19,6 +19,11 @@ namespace Strucna.Controllers
         }
 
 
+        public ActionResult AdminIndex()
+        {
+            return View();
+        }
+
         [HttpGet]
         public ActionResult reg_mentor()
         {
@@ -31,7 +36,17 @@ namespace Strucna.Controllers
         {
             if (ModelState.IsValid)
             {
+                foreach (Mentor mentor in baza.Mentori)
+                {
+                    if (m.email == mentor.email)
+                    {
+                       
 
+                        ViewBag.email = "Email se vec koristi";
+
+                        return View(m);
+                    }
+                }
                 baza.Mentori.Add(m);
                 baza.SaveChanges();
                 return RedirectToAction("login");
@@ -45,6 +60,30 @@ namespace Strucna.Controllers
         public ActionResult reg_student()
         {
             Student s = new Student();
+
+            return View(s);
+        }
+
+        public ActionResult reg_student(Student s)
+        {
+            if (ModelState.IsValid)
+            {
+                foreach (Student student in baza.Studenti)
+                {
+                    if (s.email == student.email)
+                    {
+
+
+                        ViewBag.email = "Email se vec koristi";
+
+                        return View(s);
+                    }
+                }
+                baza.Studenti.Add(s);
+                baza.SaveChanges();
+                return RedirectToAction("login");
+
+            }
 
             return View(s);
         }
@@ -68,7 +107,9 @@ namespace Strucna.Controllers
                     return RedirectToAction("AdminIndex");
                 }
             }
-            return RedirectToAction("Prijava");
+            return RedirectToAction("login");
         }
+       
     }
 }
+// ASD

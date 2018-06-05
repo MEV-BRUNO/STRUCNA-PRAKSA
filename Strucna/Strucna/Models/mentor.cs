@@ -9,6 +9,7 @@ namespace Strucna.Models
 {
     [Table("mentor")]
     public class Mentor {
+        internal object mail;
 
         [Required]
         [Key]
