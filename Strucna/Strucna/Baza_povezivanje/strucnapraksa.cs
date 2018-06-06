@@ -12,5 +12,7 @@ namespace Strucna.Baza_povezivanje
     {
  
             public DbSet<Mentor> Mentori { get; set; }
+        public DbSet<Student> Studenti { get; set; }
+        
     }
     }
