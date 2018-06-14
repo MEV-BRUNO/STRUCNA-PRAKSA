@@ -9,7 +9,7 @@ namespace Strucna.Models
 {
     [Table("mentor")]
     public class Mentor {
-        internal object mail;
+ 
 
         [Required]
         [Key]
@@ -23,6 +23,7 @@ namespace Strucna.Models
         [DataType(DataType.EmailAddress, ErrorMessage = "Upisali ste nevaljanu e-mail adresu")]
         [Display(Name = "Email adresa")]
         public string email { get; set; }
+
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
         [Display(Name = "Lozinka")]
         public string lozinka { get; set; }

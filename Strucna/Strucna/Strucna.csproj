@@ -177,11 +177,13 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Dnevnik_prakse.cs" />
     <Compile Include="Models\Dokumenti.cs" />
+    <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Mentor.cs" />
     <Compile Include="Models\Ocjena.cs" />
     <Compile Include="Models\Poduzece.cs" />
@@ -2228,20 +2230,20 @@
     <Content Include="Views\Login\lozinka.cshtml" />
     <Content Include="Views\Login\login.cshtml" />
     <Content Include="Views\Admin\index_admin.cshtml" />
-    <Content Include="Views\Admin\popis_mentora.cshtml" />
-    <Content Include="Views\Admin\popis_mentora_2.cshtml" />
-    <Content Include="Views\Admin\popis_mentora_detalji.cshtml" />
     <Content Include="Views\Admin\popis_studijskih_programa.cshtml" />
     <Content Include="Views\Admin\strucna_praksa.cshtml" />
-    <Content Include="Views\Admin\dnevnik_prakse.cshtml" />
     <Content Include="Views\Admin\o_praksi.cshtml" />
-    <Content Include="Views\Admin\osobni_podaci.cshtml" />
     <Content Include="Views\Admin\partial_mentor.cshtml" />
-    <Content Include="Views\Admin\partial_ostalo.cshtml" />
     <Content Include="Views\Admin\prijava_studenta.cshtml" />
     <Content Include="Views\Admin\poduzeca.cshtml" />
     <Content Include="Views\Admin\dokumenti.cshtml" />
     <Content Include="Views\Login\reg_student.cshtml" />
+    <Content Include="Views\Login\Verifikacija.cshtml" />
+    <Content Include="Views\Student\dnevnik_prakse.cshtml" />
+    <Content Include="Views\Student\dokumenti.cshtml" />
+    <Content Include="Views\Student\index_admin.cshtml" />
+    <Content Include="Views\Student\osobni_podaci.cshtml" />
+    <Content Include="Views\Student\prijava_studenta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

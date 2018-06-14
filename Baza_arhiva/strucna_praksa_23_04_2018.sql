@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `prijava` (
 --
 
 CREATE TABLE IF NOT EXISTS `student` (
-  `id_studnet` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id_studnet` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
   `ime_prezime` varchar(100) CHARACTER SET utf16 COLLATE utf16_croatian_ci NOT NULL,
   `adresa` varchar(100) CHARACTER SET utf8 COLLATE utf8_croatian_ci NOT NULL,
   `mob` varchar(30) CHARACTER SET utf8 COLLATE utf8_croatian_ci NOT NULL,

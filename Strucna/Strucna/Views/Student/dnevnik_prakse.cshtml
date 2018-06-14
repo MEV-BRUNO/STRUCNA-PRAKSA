@@ -1,6 +1,7 @@
-﻿
-@{
+﻿@{
+
     Layout = null;
+
 }
 
 <!DOCTYPE html>
@@ -12,7 +13,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8" />
-    <title>PAUP</title>
+    <title>BCORE Admin Dashboard Template | Data Tables</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -28,7 +29,7 @@
     <link rel="stylesheet" href="~/assets/plugins/Font-Awesome/css/font-awesome.css" />
     <!--END GLOBAL STYLES -->
     <!-- PAGE LEVEL STYLES -->
-    <link href="~/assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
     <!-- END PAGE LEVEL  STYLES -->
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -39,35 +40,28 @@
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
 <body class="padTop53 ">
-
     <!-- MAIN WRAPPER -->
     <div id="wrap">
 
-
         <!-- HEADER SECTION -->
         <div id="top">
-
             <nav class="navbar navbar-inverse navbar-fixed-top " style="padding-top: 10px;">
                 <a data-original-title="Show/Hide Menu" data-placement="bottom" data-tooltip="tooltip" class="accordion-toggle btn btn-primary btn-sm visible-xs" data-toggle="collapse" href="#menu" id="menu-toggle">
                     <i class="icon-align-justify"></i>
                 </a>
                 <!-- LOGO SECTION -->
                 <header class="navbar-header">
-
                     <a href='@Url.Action("Index","Home")' class="navbar-brand">
                         <img src="~/assets/img/logo.png" alt="" />
                     </a>
                 </header>
                 <!-- END LOGO SECTION -->
                 <ul class="nav navbar-top-links navbar-right">
-
                     <!--ADMIN SETTINGS SECTIONS -->
-
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="icon-user "></i>&nbsp; <i class="icon-chevron-down "></i>
                         </a>
-
                         <ul class="dropdown-menu dropdown-user">
                             <li>
                                 <a href="#"><i class="icon-user"></i> Korisničk profil </a>
@@ -80,13 +74,10 @@
                                 <a href="login.html"><i class="icon-signout"></i> Odjava </a>
                             </li>
                         </ul>
-
                     </li>
                     <!--END ADMIN SETTINGS -->
                 </ul>
-
             </nav>
-
         </div>
         <!-- END HEADER SECTION -->
         <!-- MENU SECTION -->
@@ -101,53 +92,36 @@
                 </div>
                 <br />
             </div>
-
             <ul id="menu" class="collapse">
 
-
                 <li class="panel">
-                    <a href='@Url.Action("index_admin","Admin")'>
+                    <a href='@Url.Action("index_admin","Student")'>
                         <i class="icon-table"></i> Početna stranica
                     </a>
                 </li>
-                <li class="panel ">
-                    <a style="color:darkviolet;" href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
-                        <i class="icon-tasks"> </i> Mentori
 
-                        <span class="pull-right">
-                            <i class="icon-angle-left"></i>
-                        </span>
-                    </a>
-                    <ul class="panel-collapse collapse in" id="component-nav">
-                        @Html.Partial("partial_mentor")
-                    </ul>
-                </li>
                 <li class="panel ">
-                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-rod">
+                    <a style="color:darkviolet;" href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-rod">
                         <i class="icon-tasks"> </i> Studenti
 
                         <span class="pull-right">
                             <i class="icon-angle-left"></i>
                         </span>
                     </a>
-                    <ul class="collapse" id="component-rod">
-                        <li class=""><a href='@Url.Action("o_praksi","Admin")'><i class="icon-angle-right"></i> Podaci o praksi </a></li>
-                        <li class=""><a href='@Url.Action("osobni_podaci","Admin")'><i class="icon-angle-right"></i> Osobni podaci </a></li>
+                    <ul class="panel-collapse collapse in" id="component-rod">
+                        <li class=""><a href='@Url.Action("osobni_podaci","Student")'><i class="icon-angle-right"></i> Podaci o praksi </a></li>
+                        <li class=""><a href='@Url.Action("prijava_studenta","Student")'><i class="icon-angle-right"></i> Osobni podaci </a></li>
+                        <li class=""><a href='@Url.Action("dnevnik_prakse","Student")'><i class="icon-angle-right"></i> Dnevnik prakse </a></li>
+                        <li class=""><a href='@Url.Action("dokumenti","Student")'><i class="icon-angle-right"></i> Dokumenti </a> </li>
                     </ul>
+
+
                 </li>
-
-
-
-
-
-                @Html.Partial("partial_ostalo")
             </ul>
-
         </div>
         <!--END MENU SECTION -->
         <!--PAGE CONTENT -->
         <div id="content">
-
             <div class="inner">
                 <div class="row">
                     <div class="col-lg-12">
@@ -185,57 +159,42 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Prezime i ime</th>
-                                                <th>Studijski program</th>
-                                                <th>Mail</th>
-                                                <th>Lozinka</th>
+                                                <th>Naslov</th>
+                                                <th>Datum</th>
                                                 <th>Aktivnost</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td class="col-md-1">1.</td>
-                                                <td class="col-md-3">Maja Novak</td>
-                                                <td class="col-md-2">Računarstvo</td>
-                                                <td class="col-md-2">maja.novak@gmail.com</td>
-                                                <td class="col-md-1">12345</td>
+                                                <td class="col-md-7">Praksa 1. dan</td>
+                                                <td class="col-md-2">01.03.2018</td>
                                                 <td class="col-md-2">
-                                                    <a href="#" class="btn btn-primary btn-xs btn-grad">Uredi</a>
-                                                    <a href="#" class="btn btn-danger btn-xs btn-grad">Briši</a>
+                                                    <a href="#" class="btn btn-primary btn-xs btn-grad">Dokument</a>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td class="col-md-1">2.</td>
-                                                <td class="col-md-3">Vanja Ivanović</td>
-                                                <td class="col-md-2">Menadžment sporta i turizma</td>
-                                                <td class="col-md-2">vanja.ivanovic@gmail.com</td>
-                                                <td class="col-md-1">12345</td>
+                                                <td class="col-md-7">Praksa 2. dan</td>
+                                                <td class="col-md-2">21.03.2018</td>
                                                 <td class="col-md-2">
-                                                    <a href="#" class="btn btn-primary btn-xs btn-grad">Uredi</a>
-                                                    <a href="#" class="btn btn-danger btn-xs btn-grad">Briši</a>
+                                                    <a href="#" class="btn btn-primary btn-xs btn-grad">Dokument</a>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
-
-
 
 
         </div>
         <!--END PAGE CONTENT -->
 
-
     </div>
-
     <!--END MAIN WRAPPER -->
     <!-- FOOTER -->
     <div id="footer">
@@ -251,9 +210,9 @@
     <script src="~/assets/plugins/dataTables/jquery.dataTables.js"></script>
     <script src="~/assets/plugins/dataTables/dataTables.bootstrap.js"></script>
     <script>
-         $(document).ready(function () {
-             $('#dataTables-example').dataTable();
-         });
+        $(document).ready(function () {
+            $('#dataTables-example').dataTable();
+        });
     </script>
     <!-- END PAGE LEVEL SCRIPTS -->
 </body>
