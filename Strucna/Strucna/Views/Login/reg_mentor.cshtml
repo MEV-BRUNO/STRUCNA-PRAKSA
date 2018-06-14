@@ -51,6 +51,12 @@
                             @Html.PasswordFor(model => model.lozinka, new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.lozinka, "", new { @class = "text-danger" })
                         </p>
+                        <p>
+                            @Html.LabelFor(model => model.ConfirmLozinka, new { @class = "control-label" })
+                            @Html.PasswordFor(model => model.ConfirmLozinka, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ConfirmLozinka, "", new { @class = "text-danger" })
+                        </p>
+                     
 
 
 

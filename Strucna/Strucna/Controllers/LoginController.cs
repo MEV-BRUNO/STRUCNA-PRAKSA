@@ -66,11 +66,9 @@ namespace Strucna.Controllers
         {
             if (ModelState.IsValid)
             {
- 
                 foreach (Student stud in baza.Studenti)
                 {
                     if (s.email == stud.email)
- 
                     {
 
 
@@ -79,7 +77,6 @@ namespace Strucna.Controllers
                         return View(s);
                     }
                 }
- 
                 MailMessage sendEmail = new MailMessage("info@strucnapraksa.com",s.email);
                 Guid guid = Guid.NewGuid();
                 sendEmail.Subject = "Welcome";
@@ -98,12 +95,10 @@ namespace Strucna.Controllers
                
 
             
- 
 
             return View(s);
         }
 
- 
         public ActionResult Verifikacija(string id)
         {
             ViewBag.aktivni = "Account nije aktivan";
@@ -129,7 +124,6 @@ namespace Strucna.Controllers
                  return View();
         }
 
- 
         [HttpGet]
         public ActionResult login()
         {
@@ -162,7 +156,6 @@ namespace Strucna.Controllers
 
             return RedirectToAction("login");
         }
-       
     }
 }
 // ASD
