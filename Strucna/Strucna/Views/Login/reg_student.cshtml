@@ -65,9 +65,13 @@
                         @Html.RadioButtonFor(model => model.izvanredni, 0) Redovni
                         @Html.RadioButtonFor(model => model.izvanredni, 1) Izvanredni
                         <p>
+                            <p>
+                                @Html.LabelFor(model => model.ConfirmLozinka, new { @class = "control-label" })
+                                @Html.PasswordFor(model => model.ConfirmLozinka, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ConfirmLozinka, "", new { @class = "text-danger" })
+                            </p>
 
-
-                        </p>
+                         
                         <button class="btn btn-success">Registracija</button>
                     </form>
                 </div>

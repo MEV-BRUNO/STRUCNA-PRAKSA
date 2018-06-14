@@ -26,7 +26,11 @@ namespace Strucna.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
         [Display(Name = "Lozinka")]
         public string lozinka { get; set; }
-      
+        [NotMapped]
+        [Compare("lozinka", ErrorMessage = "Šifre se ne podudaraju!")]
+        [Display(Name = "Ponovite Lozinku")]
+        public string ConfirmLozinka { get; set; }
+
         [Display(Name = "ID studij")]
         public int id_studij { get; set; }
 
