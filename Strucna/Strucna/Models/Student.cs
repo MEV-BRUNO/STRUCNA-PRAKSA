@@ -28,6 +28,7 @@ namespace Strucna.Models
         public string mob { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "Upisali ste nevaljanu e-mail adresu")]
         [Display(Name = "Email adresa")]
         public string email { get; set; }
 
