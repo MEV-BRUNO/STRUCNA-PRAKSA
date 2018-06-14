@@ -28,14 +28,20 @@ namespace Strucna.Models
         public string mob { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
-        [DataType(DataType.EmailAddress, ErrorMessage = "Upisali ste nevaljanu e-mail adresu")]
         [Display(Name = "Email adresa")]
         public string email { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
         [Display(Name = "Lozinka")]
         public string lozinka { get; set; }
-       
+
+
+        [NotMapped]
+        [Compare("lozinka", ErrorMessage = "Šifre se ne podudaraju!")]
+        [Display(Name = "Ponovite Lozinku")]
+        public string ConfirmLozinka { get; set; }
+
+
         public string aktivacijski_link { get; set; }
 
         
