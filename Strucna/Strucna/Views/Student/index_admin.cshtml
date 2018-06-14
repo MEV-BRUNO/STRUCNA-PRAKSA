@@ -107,33 +107,30 @@
 
 
 				<li class="panel">
-					<a style="color:darkviolet;" href='@Url.Action("index_admin","Admin")'>
+					<a style="color:darkviolet;" href='@Url.Action("index_admin","Student")'>
 						<i class="icon-table"></i> Početna stranica
 					</a>
 				</li>
 
+			
 				<li class="panel ">
-					<a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
-						<i class="icon-tasks"> </i> Mentori
+					<a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-rod">
+						<i class="icon-tasks"> </i> Studenti
 
 						<span class="pull-right">
 							<i class="icon-angle-left"></i>
 						</span>
 					</a>
-					<ul class="collapse" id="component-nav">
-					   
-						@Html.Partial("partial_mentor")
+					<ul class="collapse" id="component-rod">
+						<li class=""><a href='@Url.Action("osobni_podaci","Student")'><i class="icon-angle-right"></i> Podaci o praksi </a></li>
+						<li class=""><a href='@Url.Action("prijava_studenta","Student")'><i class="icon-angle-right"></i> Osobni podaci </a></li>
+						<li class=""><a href='@Url.Action("dnevnik_prakse","Student")'><i class="icon-angle-right"></i> Dnevnik prakse </a></li>
+						<li class=""><a href='@Url.Action("dokumenti","Student")'><i class="icon-angle-right"></i> Dokumenti </a> </li>
+						</ul>
+			   
 
-					</ul>
+			 
 				</li>
-				 
-
-
-
-
-
-
-				
 			</ul>
 
 		</div>
