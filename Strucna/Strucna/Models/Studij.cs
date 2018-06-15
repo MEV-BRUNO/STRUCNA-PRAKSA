@@ -17,4 +17,7 @@ namespace Strucna.Models
         [Display(Name = "Naziv")]
         public string naziv { get; set; }
     }
+
+ 
+    
 }

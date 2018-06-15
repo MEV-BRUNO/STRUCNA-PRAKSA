@@ -3,6 +3,9 @@
     Layout = "~/Views/Shared/_LayoutStudent.cshtml";
 
 }
+@using System.Web.Mvc;
+@using Strucna.Models
+@model Strucna.Models.Poduzece
 
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -41,103 +44,138 @@
 <!-- BEGIN BODY -->
 <body class="padTop53 ">
 
-        <!--PAGE CONTENT -->
-        <div id="content">
-            <div class="inner">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="panel panel-default">
-                            <br>
-                            <div class="panel-heading">
-                                <h4> Prijava stručne prakse</h4>
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="panel panel-default">
+    <!--PAGE CONTENT -->
+    <div id="content">
+        <div class="inner">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <br>
+                        <div class="panel-heading">
+                            <h4> Prijava stručne prakse</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="panel panel-default">
 
-                                            <div class="panel-body">
-                                                <br>
-                                                <div class="table-responsive">
-                                                    <form class="form-horizontal">
-                                                        <div class="form-group">
-                                                            <label for="text1" class="control-label col-lg-4">Ime i prezime</label>
-                                                            <div class="col-lg-8">
-                                                                <input type="text" id="text1" placeholder="Ime i prezime" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-lg-4">Studijski program:</label>
-                                                            <div class="col-lg-8">
-                                                                <select class="form-control">
-                                                                    <option>Računarstvo</option>
-                                                                    <option>Menadžment</option>
-                                                                    <option>Održivi razvoj</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="text1" class="control-label col-lg-4">Naziv firme</label>
-                                                            <div class="col-lg-8">
-                                                                <input type="text" placeholder="Firme" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="text1" class="control-label col-lg-4">Adresa poduzeća</label>
-                                                            <div class="col-lg-8">
-                                                                <textarea class="form-control" placeholder="Adresa poduzeća" rows="3"></textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="text1" class="control-label col-lg-4">Mjest/grad</label>
-                                                            <div class="col-lg-8">
-                                                                <input type="text" placeholder="Mjest/grad" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="text1" class="control-label col-lg-4">Kontakt osoba</label>
-                                                            <div class="col-lg-8">
-                                                                <input type="text" id="text1" placeholder="Kontakt osoba" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="text1" class="control-label col-lg-4">E-mail poduzeća</label>
-                                                            <div class="col-lg-8">
-                                                                <input type="text" id="text1" placeholder="E-mail poduzeća" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="text1" class="control-label col-lg-4">Opis poslova</label>
-                                                            <div class="col-lg-8">
-                                                                <textarea class="form-control" placeholder="Opis poslova koje ću obavljati" rows="3"></textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="text4" class="control-label col-lg-4"></label>
-                                                            <div class="col-lg-8">
-                                                                <button type="submit" class="btn btn-success">Potvrdi</button>
-                                                                <button type="reset" class="btn btn-success">Odustani</button>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
+                                        <div class="panel-body">
+                                            <br>
+                                            <div class="table-responsive">
+                                                @using (Html.BeginForm())
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <div class="form-group">
+
+                                                        @Session["Username"]
+                                                        @for (int i = 0; i < 3; i++)
+                                                        {
+                                                            string ispis;
+                                                            string[] smjer = { "Računarstvo", "Menadžment", "Održivi Razvoj" };
+                                                            if ((int)Session["Smjer"] == i)
+                                                            {
+
+                                                                ispis = smjer[i];
+                                                                @Html.Raw(ispis)
+                                                            }
+
+
+
+                                                        }
+
+
+                                                        <form method="post" action="">
+                                                            <p>
+
+                                                                @Html.LabelFor(model => model.naziv, new { @class = "control-label" })
+                                                            
+                                                                @Html.EditorFor(model => model.naziv, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.naziv, "", new { @class = "text-danger" })
+
+                                                            </p>
+                                                            <p>
+
+                                                                @Html.LabelFor(model => model.adresa, new { @class = "control-label" })
+                                                                <br/>
+                                                                @Html.TextAreaFor(model => model.adresa, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.adresa, "", new { @class = "text-danger" })
+
+                                                            </p>
+                                                            <p>
+
+                                                                @Html.LabelFor(model => model.grad, new { @class = "control-label" })
+                                                            
+                                                                @Html.EditorFor(model => model.grad, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.grad, "", new { @class = "text-danger" })
+
+                                                            </p>
+                                                            <p>
+
+                                                                @Html.LabelFor(model => model.kontakt_osoba, new { @class = "control-label" })
+                                                            
+                                                                @Html.EditorFor(model => model.kontakt_osoba, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.kontakt_osoba, "", new { @class = "text-danger" })
+
+                                                            </p>
+                                                            <p>
+
+                                                                @Html.LabelFor(model => model.tel, new { @class = "control-label" })
+                                                            
+                                                                @Html.EditorFor(model => model.tel, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.tel, "", new { @class = "text-danger" })
+
+                                                            </p>
+                                                            <p>
+
+                                                                @Html.LabelFor(model => model.email, new { @class = "control-label" })
+                                                            
+                                                                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+
+                                                            </p>
+                                                            <p>
+
+                                                                @Html.LabelFor(model => model.opis, new { @class = "control-label" })
+                                                                <br/>
+                                                                @Html.TextAreaFor(model => model.opis, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.opis, "", new { @class = "text-danger" })
+
+                                                            </p>
+                                                        
+                                                            <p>
+
+                                                                @Html.LabelFor(model => model.URL, new { @class = "control-label" })
+                                                                <br/>
+                                                                @Html.TextAreaFor(model => model.URL, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.URL, "", new { @class = "text-danger" })
+
+                                                            </p>
+
+                                                            <button class="btn btn-danger">Prijava</button>
+
+                                                        </form>
+                                                    </div>
+
+                                                }
                                             </div>
+                                            @section Scripts {
+                                                @Scripts.Render("~/Scripts/jquery.validate")
+                                            }
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                    </div>
-                                </div><!--END ROW -->
-                            </div>
+                                </div>
+                                <div class="col-lg-6">
+                                </div>
+                            </div><!--END ROW -->
                         </div>
                     </div>
                 </div>
             </div>
-
-
         </div>
-        <!--END PAGE CONTENT -->
+
 
     </div>
+    <!--END PAGE CONTENT -->
     <!--END MAIN WRAPPER -->
     <!-- FOOTER -->
     <div id="footer">

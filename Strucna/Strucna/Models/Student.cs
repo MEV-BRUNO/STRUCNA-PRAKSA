@@ -46,12 +46,17 @@ namespace Strucna.Models
 
         
         public short aktivan { get; set; }
-      
+
+     
+        [Display(Name = "Studij")]
         public int id_studij { get; set; }
+    
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
         [Display(Name = "Redovni/Izvanredi")]
         public short izvanredni{ get; set; }
     }
-    
+ 
 }
+
+

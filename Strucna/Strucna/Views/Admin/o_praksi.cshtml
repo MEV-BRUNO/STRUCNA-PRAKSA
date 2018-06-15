@@ -1,8 +1,13 @@
-﻿@{
+﻿@using Strucna.Baza_povezivanje
+@using Strucna.Models
+@{
 
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+        
+        
 
 }
+@model IEnumerable<Strucna.Models.Student>
 
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -46,7 +51,7 @@
             <div class="row">
                 <div class="col-lg-12">
 
-                    <h2> Naslov opcije menija </h2>
+                    <h2> Popis Studenta </h2>
 
                 </div>
             </div>
@@ -74,49 +79,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="col-md-1">1.</td>
-                                            <td class="col-md-3">Maja Novak</td>
-                                            <td class="col-md-2">Informatika GLS d.o.o.</td>
-                                            <td class="col-md-2">Od:01.03.2017<br>Do:01.05.2017</td>
-                                            <td class="col-md-1">Da</td>
-                                            <td class="col-md-1">Pozitivno</td>
-                                            <td class="col-md-2">
-                                                <a href="#" class="btn btn-primary btn-xs btn-grad">Uredi</a>
-                                                <a href="#" class="btn btn-info btn-xs btn-grad">Ocjena</a>
-                                                <a href="#" class="btn btn-info btn-xs btn-grad">Dnevnik</a>
-                                                <a href="#" class="btn btn-danger btn-xs btn-grad">Briši</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-md-1">2.</td>
-                                            <td class="col-md-3">Nikola Poljak</td>
-                                            <td class="col-md-2">Informatika GLS d.o.o.</td>
-                                            <td class="col-md-2">Od:01.03.2017<br>Do:01.05.2017</td>
-                                            <td class="col-md-1">Da</td>
-                                            <td class="col-md-1">Negativno</td>
-                                            <td class="col-md-2">
-                                                <a href="#" class="btn btn-primary btn-xs btn-grad">Uredi</a>
-                                                <a href="#" class="btn btn-info btn-xs btn-grad">Ocjena</a>
-                                                <a href="#" class="btn btn-info btn-xs btn-grad">Dnevnik</a>
-                                                <a href="#" class="btn btn-danger btn-xs btn-grad">Briši</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-md-1">2.</td>
-                                            <td class="col-md-3">Vesna Poljanec</td>
-                                            <td class="col-md-2">Informatika GLS d.o.o.</td>
-                                            <td class="col-md-2">Od:01.03.2017<br>Do:01.05.2017</td>
-                                            <td class="col-md-1">Da</td>
-                                            <td class="col-md-1">Neocjenjeno</td>
-                                            <td class="col-md-2">
-                                                <a href="#" class="btn btn-primary btn-xs btn-grad">Uredi</a>
-                                                <a href="#" class="btn btn-info btn-xs btn-grad">Ocjena</a>
-                                                <a href="#" class="btn btn-info btn-xs btn-grad">Dnevnik</a>
-                                                <a href="#" class="btn btn-danger btn-xs btn-grad">Briši</a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
+
+                                        @foreach (Student a in Model)
+                                        {
+                                            <tr>
+                                                <td class="col-md-1">@a.id_studnet </td>
+                                                <td class="col-md-3">@a.ime_prezime  </td>
+                                                <td class="col-md-2">Informatika GLS d.o.o.</td>
+                                                <td class="col-md-2">Od:01.03.2017<br>Do:01.05.2017</td>
+                                                <td class="col-md-1">Da</td>
+                                                <td class="col-md-1">Pozitivno</td>
+                                                <td class="col-md-2">
+                                                    <a href="#" class="btn btn-primary btn-xs btn-grad">Uredi</a>
+                                                    <a href="#" class="btn btn-info btn-xs btn-grad">Ocjena</a>
+                                                    <a href="#" class="btn btn-info btn-xs btn-grad">Dnevnik</a>
+                                                    <a href="#" class="btn btn-danger btn-xs btn-grad">Briši</a>
+                                                </td>
+                                            </tr>
+                                                }
+                                                                                       
+                                        </tbody>
                                 </table>
                             </div>
                         </div>
@@ -128,7 +110,7 @@
 
     </div>
     <!--END PAGE CONTENT -->
-    </div>
+     
     <!--END MAIN WRAPPER -->
     <!-- FOOTER -->
     <div id="footer">

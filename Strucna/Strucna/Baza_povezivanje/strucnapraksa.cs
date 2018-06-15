@@ -19,6 +19,7 @@ namespace Strucna.Baza_povezivanje
 
         public DbSet<Student> Studenti { get; set; } 
 
+        public DbSet<Poduzece> Poduzeca { get; set; }
 
 
     }
