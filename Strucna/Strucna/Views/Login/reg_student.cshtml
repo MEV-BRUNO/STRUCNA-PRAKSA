@@ -67,8 +67,18 @@
                             @Html.ValidationMessageFor(model => model.ConfirmLozinka, "", new { @class = "text-danger" })
                         </p>
                         <p>
-                        @Html.RadioButtonFor(model => model.izvanredni, 0) Redovni
-                        @Html.RadioButtonFor(model => model.izvanredni, 1) Izvanredni
+                            @Html.RadioButtonFor(model => model.izvanredni, 0) Redovni
+                            @Html.RadioButtonFor(model => model.izvanredni, 1) Izvanredni
+                        </p>
+                        <p>
+                            
+                            @Html.LabelFor(model => model.id_studij)<br />
+                            @Html.RadioButtonFor(model => model.id_studij, 0) Računarstvo
+                            @Html.RadioButtonFor(model => model.id_studij, 1) Menadment
+                            @Html.RadioButtonFor(model => model.id_studij, 2) Održivi
+
+
+
                         </p>
                          
 

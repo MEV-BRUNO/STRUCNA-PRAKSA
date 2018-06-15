@@ -142,6 +142,8 @@ namespace Strucna.Controllers
                 
                 if (men.lozinka == obj.lozinka && men.email == obj.email)
                 {
+                    Session["UserID"] = men.id_mentor;
+                    Session["Username"] = men.ime_prezime;
                     return RedirectToAction("index_admin", "Admin");
                 }
             }
@@ -150,7 +152,10 @@ namespace Strucna.Controllers
 
                 if (stud.lozinka == obj.lozinka && stud.email == obj.email && stud.aktivan == 1)
                 {
-                    return RedirectToAction("index_admin", "Student");
+                    Session["UserID"] = stud.id_studnet;
+                    Session["Username"] = stud.ime_prezime;
+                    Session["Smjer"] = stud.id_studij;
+                    return RedirectToAction("index_student", "Student");
                 }
             }
 

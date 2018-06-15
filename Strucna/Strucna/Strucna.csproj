@@ -183,6 +183,7 @@
     </Compile>
     <Compile Include="Models\Dnevnik_prakse.cs" />
     <Compile Include="Models\Dokumenti.cs" />
+    <Compile Include="Models\ForeginKeyAttribute.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Mentor.cs" />
     <Compile Include="Models\Ocjena.cs" />
@@ -2246,6 +2247,8 @@
     <Content Include="Views\Shared\_LayoutStudent.cshtml" />
     <Content Include="Views\Student\index_student.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Student\logout.cshtml" />
+    <Content Include="Views\Admin\logout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
