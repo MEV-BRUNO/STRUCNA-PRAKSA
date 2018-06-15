@@ -2241,9 +2241,11 @@
     <Content Include="Views\Login\Verifikacija.cshtml" />
     <Content Include="Views\Student\dnevnik_prakse.cshtml" />
     <Content Include="Views\Student\dokumenti.cshtml" />
-    <Content Include="Views\Student\index_admin.cshtml" />
     <Content Include="Views\Student\osobni_podaci.cshtml" />
     <Content Include="Views\Student\prijava_studenta.cshtml" />
+    <Content Include="Views\Shared\_LayoutStudent.cshtml" />
+    <Content Include="Views\Student\index_student.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

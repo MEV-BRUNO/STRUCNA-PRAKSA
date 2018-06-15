@@ -8,7 +8,7 @@ namespace Strucna.Controllers
 {
     public class StudentController : Controller
     {
-        public ActionResult index_admin()
+        public ActionResult index_student()
         {
             return View();
         }
