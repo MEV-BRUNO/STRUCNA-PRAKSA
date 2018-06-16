@@ -2250,6 +2250,7 @@
     <Content Include="Views\Student\logout.cshtml" />
     <Content Include="Views\Admin\logout.cshtml" />
     <Content Include="Views\Login\Reset.cshtml" />
+    <Content Include="Views\Student\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
