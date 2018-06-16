@@ -3,8 +3,8 @@
 @{
     Layout = null;
 }
-
-
+@using Strucna.Models
+@model Login
 <!DOCTYPE html>
 
 <html>
@@ -22,23 +22,32 @@
         <div class="col-sm-4">
 
 
-            <div class="form-group">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
 
-                <a href='@Url.Action("Index","Home")'>
-                    <img src="~/assets/img/logo.png" class="center-block" alt="" />
-                </a>
+                    <a href='@Url.Action("Index", "Home")'>
+                        <img src="~/assets/img/logo.png" class="center-block" alt="" />
+                    </a>
 
-                <div class="margina">
-                    <form method="post" action="lozinka.html">
-                        <p class="well well-sm" style="background: #0d70b7; color:white; text-align: center; ">Upišitive valjanu E-mail adresu</p>
-                        <p><input class="form-control" type="email" name="login" value="" placeholder="Vaša e-mail adresa"></p>
-                        <button class="btn btn-success">Obnova lozinke</button>
+                    <div class="margina">
+                        <form method="post" action="">
+                            <p class="well well-sm" style="background: #0d70b7; color:white; text-align: center; ">Upišite email adresu</p>
+                      
+                            <p>
+                                @Html.LabelFor(model => model.email, new { @class = "control-label" })
+                                @ViewBag.email
+                                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                            </p>
+ 
+                            <button class="btn btn-success">Reset Password</button>
 
-
-
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            }
 
             <div class="row">
 

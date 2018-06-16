@@ -55,6 +55,9 @@ namespace Strucna.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
         [Display(Name = "Redovni/Izvanredi")]
         public short izvanredni{ get; set; }
+
+         
+        public string password_reset { get; set; }
     }
  
 }

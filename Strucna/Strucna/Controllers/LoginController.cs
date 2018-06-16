@@ -17,11 +17,113 @@ namespace Strucna.Controllers
     {
         private strucnapraksa baza = new strucnapraksa();
 
+
         public ActionResult lozinka()
+        {
+            Login obj = new Login();
+
+            return View(obj);
+
+
+        }
+        [HttpPost]
+        public ActionResult lozinka(Login l)
         {
            
 
+            foreach (Mentor mentor in baza.Mentori)
+            {
+                if (l.email == mentor.email)
+                {
+
+                    MailMessage sendEmail = new MailMessage("info@strucnapraksa.com", mentor.email);
+                    Guid guid = Guid.NewGuid();
+                    sendEmail.Subject = "Reset Password";
+                    string reset = "" + guid;
+                    sendEmail.Body = "Reset link: strucnapraksa.com/Login/Reset/" + guid;
+                    ViewBag.email = "Link za resitiranje sifre je poslan na email";
+                    mentor.password_reset = reset;
+                    ViewBag.email = "Link za novu šifru poslan na email";
+                    break;
+
+                }
+            }
+
+            foreach (Student stud in baza.Studenti)
+            {
+                if (l.email == stud.email)
+                {
+
+                    MailMessage sendEmail = new MailMessage("info@strucnapraksa.com", stud.email);
+                    Guid guid = Guid.NewGuid();
+                    sendEmail.Subject = "Reset Password";
+                    string reset = "" + guid;
+                    sendEmail.Body = "Reset link: strucnapraksa.com/Login/Reset/" + guid;
+                    ViewBag.email = "Link za resitiranje sifre je poslan na email";
+                    stud.password_reset = reset;
+                    ViewBag.email = "Link za novu šifru poslan na email";
+                    break;
+
+                }
+                
+            }
+ 
+
+            baza.SaveChanges();
             return View();
+        }
+
+     
+        public ActionResult Reset(string id)
+        {
+            
+         Login obj = new Login();
+            Session["reset"] = id;
+            
+         return View(obj);
+
+        }
+
+
+        [HttpPost]
+        public ActionResult Reset(Login l)
+        {
+            string provjera = (string)Session["reset"];
+            if (l.lozinka == l.lozinkaConfim)
+            {
+                foreach (Mentor mentor in baza.Mentori)
+                {
+
+                    if (mentor.password_reset == provjera)
+                    {
+                        Guid guid = Guid.NewGuid();
+                        string save = "" + guid;
+                        mentor.lozinka = l.lozinka;
+                        mentor.password_reset = save;
+                        break;
+                    }
+
+                }
+                foreach (Student stud in baza.Studenti)
+                {
+
+                    if (stud.password_reset == provjera)
+                    {
+                        Guid guid = Guid.NewGuid();
+                        string save = "" + guid;
+                        stud.lozinka = l.lozinka;
+                        stud.password_reset = save;
+                        break;
+                    }
+
+                }
+                baza.SaveChanges();
+
+            }
+
+        
+            return RedirectToAction("login");
+
         }
 
         [HttpGet]

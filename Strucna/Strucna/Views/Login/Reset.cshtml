@@ -1,0 +1,75 @@
+﻿
+@{
+    Layout = null;
+}
+@model Strucna.Models.Login
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="~/css/StyleSheet1.css" rel="stylesheet" />
+    <title>Prijava</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+            <div class="form-group">
+
+                <a href='@Url.Action("Index", "Home")'>
+                    <img src="~/assets/img/logo.png" class="center-block" alt="" />
+                </a>
+               
+                
+                <div class="margina">
+                    <form method="post" action="">
+                        <p class="well well-sm" style="background: #0d70b7; color:white; text-align: center; ">Upišite novu lozinku</p>
+
+                        <p>
+                            @Html.LabelFor(model => model.lozinka, new { @class = "control-label" })
+                            @Html.PasswordFor(model => model.lozinka, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.lozinka, "", new { @class = "text-danger" })
+                        </p>
+                        <p>
+
+                            @Html.LabelFor(model => model.lozinkaConfim, new { @class = "control-label" })
+                             @Html.PasswordFor(model => model.lozinkaConfim, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.lozinkaConfim, "", new { @class = "text-danger" })
+                            
+                             
+
+                        </p>
+                        <button class="btn btn-danger">Prijava</button>
+
+                    </form>
+                </div>
+            </div>
+            }
+            <div class="row">
+                <div class="login" style="float:initial">
+                    <div class="col-sm-3">
+                        <a style="text-decoration: underline" href="#">Prijava  </a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="lozinka">Zaboravio lozinku  </a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="reg_mentor">Registracija mentor </a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="reg_student">Registracija student</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</body>
+</html>

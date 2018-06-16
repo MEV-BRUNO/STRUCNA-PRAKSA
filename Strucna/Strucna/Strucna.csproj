@@ -2249,6 +2249,7 @@
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Student\logout.cshtml" />
     <Content Include="Views\Admin\logout.cshtml" />
+    <Content Include="Views\Login\Reset.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
