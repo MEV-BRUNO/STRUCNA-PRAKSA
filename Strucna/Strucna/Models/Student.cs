@@ -37,7 +37,7 @@ namespace Strucna.Models
 
 
         [NotMapped]
-        [Compare("lozinka", ErrorMessage = "Šifre se ne podudaraju!")]
+         
         [Display(Name = "Ponovite Lozinku")]
         public string ConfirmLozinka { get; set; }
 
@@ -45,7 +45,7 @@ namespace Strucna.Models
         public string aktivacijski_link { get; set; }
 
         
-        public short aktivan { get; set; }
+        public byte aktivan { get; set; }
 
      
         [Display(Name = "Studij")]

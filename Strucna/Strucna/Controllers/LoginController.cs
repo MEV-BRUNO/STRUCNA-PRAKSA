@@ -2,6 +2,8 @@
 using Strucna.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net.Mail;
 using System.Runtime.Remoting.Messaging;
@@ -45,6 +47,14 @@ namespace Strucna.Controllers
                         return View(m);
                     }
                 }
+                if (m.lozinka != m.ConfirmLozinka)
+                {
+                    ViewBag.lozinka = "Lozinke se ne podudaraju";
+
+                    return View(m);
+
+
+                }
                 baza.Mentori.Add(m);
                 baza.SaveChanges();
                 return RedirectToAction("login");
@@ -77,6 +87,16 @@ namespace Strucna.Controllers
                         return View(s);
                     }
                 }
+
+                if (s.lozinka != s.ConfirmLozinka)
+                {
+                    ViewBag.lozinka = "Lozinke se ne podudaraju";
+
+                    return View(s);
+
+
+                }
+
                 MailMessage sendEmail = new MailMessage("info@strucnapraksa.com",s.email);
                 Guid guid = Guid.NewGuid();
                 sendEmail.Subject = "Welcome";
@@ -103,25 +123,40 @@ namespace Strucna.Controllers
         {
             ViewBag.aktivni = "Account nije aktivan";
             string activation = " strucnapraksa.com/Login/Verifikacija/" + id;
-            foreach (Student student in baza.Studenti)
+            Student student_to_update = baza.Studenti.SingleOrDefault(s => s.aktivacijski_link == activation);
+            if (student_to_update.aktivan == 0)
             {
-                
-                if (activation == student.aktivacijski_link)
-                {
-                    student.aktivan = 1;
 
-                    ViewBag.aktivni = "Account je aktivan";
-                    
-                }
-                else
-                {
-                    //Pogresan Guid ili je vec verifian
-                }
+                student_to_update.aktivan = (byte)1;
+                ViewBag.aktivni = "Account je aktivan";
+
+
             }
 
-            baza.SaveChanges();
-         
-                 return View();
+
+            try
+            {
+                // Your code...
+                // Could also be before try if you know the exception occurs in SaveChanges
+
+                baza.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+
+            return View();
         }
 
         [HttpGet]
@@ -152,6 +187,7 @@ namespace Strucna.Controllers
 
                 if (stud.lozinka == obj.lozinka && stud.email == obj.email && stud.aktivan == 1)
                 {
+                    // SELECT * FROM student WHERE id_student == SESSION[]
                     Session["UserID"] = stud.id_studnet;
                     Session["Username"] = stud.ime_prezime;
                     Session["Smjer"] = stud.id_studij;

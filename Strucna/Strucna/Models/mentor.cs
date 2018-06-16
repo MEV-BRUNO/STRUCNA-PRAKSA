@@ -28,7 +28,7 @@ namespace Strucna.Models
         public string lozinka { get; set; }
 
         [NotMapped]
-        [Compare("lozinka", ErrorMessage = "Šifre se ne podudaraju!")]
+         
         [Display(Name = "Ponovite Lozinku")]
         public string ConfirmLozinka { get; set; }
 
