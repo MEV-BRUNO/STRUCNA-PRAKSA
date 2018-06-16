@@ -35,5 +35,7 @@ namespace Strucna.Models
         [Display(Name = "ID studij")]
         public int id_studij { get; set; }
 
+        public string password_reset { get; set; }
+
     }
 }
