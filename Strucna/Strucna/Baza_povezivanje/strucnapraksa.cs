@@ -21,6 +21,6 @@ namespace Strucna.Baza_povezivanje
 
         public DbSet<Poduzece> Poduzeca { get; set; }
 
-
+        public DbSet<Praksa_student> PraksaStudent { get; set; }
     }
 }

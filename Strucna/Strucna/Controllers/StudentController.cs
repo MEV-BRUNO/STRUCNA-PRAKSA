@@ -52,9 +52,17 @@ namespace Strucna.Controllers
 
             if (ModelState.IsValid)
             {
-                
-            
-            baza.Poduzeca.Add(p);
+            Praksa_student ps = new Praksa_student();
+                ps.datum_od = DateTime.Today;
+                ps.datum_do = ps.datum_od.AddDays(30);
+                ps.id_poduzece = p.id_poduzece;
+                ps.id_student = (int) Session["UserID"];
+                ps.odobreno = 0;
+
+
+            baza.PraksaStudent.Add(ps);
+                baza.SaveChanges();
+                baza.Poduzeca.Add(p);
             baza.SaveChanges();
 
                 return RedirectToAction("index_student");
