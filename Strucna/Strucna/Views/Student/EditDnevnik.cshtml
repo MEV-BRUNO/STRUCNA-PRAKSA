@@ -85,8 +85,16 @@
 
 
                                                         <form method="post" action="">
-                                                            
-                                     
+
+                                                            <p>
+
+                                                                @Html.LabelFor(model => model.red_broj, new { @class = "control-label" })
+
+                                                                @Html.EditorFor(model => model.red_broj, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.red_broj, "", new { @class = "text-danger" })
+
+                                                            </p>
+
                                                             <p>
 
                                                                 @Html.LabelFor(model => model.naslov, new { @class = "control-label" })
@@ -99,7 +107,7 @@
                                                             <p>
 
                                                                 @Html.LabelFor(model => model.opis, new { @class = "control-label" })
-
+                                                                <br/>
                                                                 @Html.TextAreaFor(model => model.opis, new { htmlAttributes = new { @class = "form-control" } })
                                                                 @Html.ValidationMessageFor(model => model.opis, "", new { @class = "text-danger" })
 
@@ -108,7 +116,7 @@
 
 
 
-                                                            <button class="btn btn-danger">Prijava</button>
+                                                            <button class="btn btn-danger">Izmjeni</button>
 
                                                         </form>
                                                     </div>
