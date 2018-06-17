@@ -1,9 +1,9 @@
 ﻿@using System.Web.Mvc;
 @using Strucna.Models
-@model Strucna.Models.Student
+@model Strucna.Models.Dnevnik_prakse
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "EditDnevnik";
     Layout = "~/Views/Shared/_LayoutStudent.cshtml";
 }
 <!DOCTYPE html>
@@ -51,7 +51,7 @@
                     <div class="panel panel-default">
                         <br>
                         <div class="panel-heading">
-                            <h4> Prijava stručne prakse</h4>
+                            <h4> Dnevnik Prakse  </h4>
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -64,64 +64,59 @@
 
                                                 @using (Html.BeginForm())
                                                 {
-                                                @Html.AntiForgeryToken()
-                                                <div class="form-group">
+                                                    @Html.AntiForgeryToken()
+                                                    <div class="form-group">
 
-                                                    @Session["Username"]
-                                                    @for (int i = 0; i < 3; i++)
-                                                    {
-                                                    string ispis;
-                                                    string[] smjer = { "Računarstvo", "Menadžment", "Održivi Razvoj" };
-                                                    if ((int)Session["Smjer"] == i)
-                                                    {
+                                                        @Session["Username"]
+                                                        @for (int i = 0; i < 3; i++)
+                                                        {
+                                                            string ispis;
+                                                            string[] smjer = { "Računarstvo", "Menadžment", "Održivi Razvoj" };
+                                                            if ((int)Session["Smjer"] == i)
+                                                            {
 
-                                                    ispis = smjer[i];
-                                                    @Html.Raw(ispis)
-                                                    }
-
-
-
-                                                    }
+                                                                ispis = smjer[i];
+                                                                @Html.Raw(ispis)
+                                                            }
 
 
-                                                    <form method="post" action="">
-                                                        <p>
 
-                                                            @Html.LabelFor(model => model.ime_prezime, new { @class = "control-label" })
+                                                        }
 
-                                                            @Html.EditorFor(model => model.ime_prezime, new { htmlAttributes = new { @class = "form-control" } })
-                                                            @Html.ValidationMessageFor(model => model.ime_prezime, "", new { @class = "text-danger" })
 
-                                                        </p>
-                                                        <p>
+                                                        <form method="post" action="">
+                                                            
+                                     
+                                                            <p>
 
-                                                            @Html.LabelFor(model => model.adresa, new { @class = "control-label" })
-                                                            <br />
-                                                            @Html.EditorFor(model => model.adresa, new { htmlAttributes = new { @class = "form-control" } })
-                                                            @Html.ValidationMessageFor(model => model.adresa, "", new { @class = "text-danger" })
+                                                                @Html.LabelFor(model => model.naslov, new { @class = "control-label" })
 
-                                                        </p>
-                                                        <p>
+                                                                @Html.EditorFor(model => model.naslov, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.naslov, "", new { @class = "text-danger" })
 
-                                                            @Html.LabelFor(model => model.mob, new { @class = "control-label" })
+                                                            </p>
 
-                                                            @Html.EditorFor(model => model.mob, new { htmlAttributes = new { @class = "form-control" } })
-                                                            @Html.ValidationMessageFor(model => model.mob, "", new { @class = "text-danger" })
+                                                            <p>
 
-                                                        </p>
+                                                                @Html.LabelFor(model => model.opis, new { @class = "control-label" })
+
+                                                                @Html.TextAreaFor(model => model.opis, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.opis, "", new { @class = "text-danger" })
+
+                                                            </p>
 
 
 
 
-                                                        <button class="btn btn-danger">Prijava</button>
+                                                            <button class="btn btn-danger">Prijava</button>
 
-                                                    </form>
-                                                </div>
+                                                        </form>
+                                                    </div>
 
                                                 }
                                             </div>
                                             @section Scripts {
-                                            @Scripts.Render("~/Scripts/jquery.validate")
+                                                @Scripts.Render("~/Scripts/jquery.validate")
                                             }
                                         </div>
                                     </div>
@@ -153,9 +148,9 @@
     <script src="~/assets/plugins/dataTables/jquery.dataTables.js"></script>
     <script src="~/assets/plugins/dataTables/dataTables.bootstrap.js"></script>
     <script>
-        $(document).ready(function () {
-            $('#dataTables-example').dataTable();
-        });
+    $(document).ready(function () {
+        $('#dataTables-example').dataTable();
+    });
     </script>
     <!-- END PAGE LEVEL SCRIPTS -->
 </body>

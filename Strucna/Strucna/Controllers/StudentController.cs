@@ -24,12 +24,21 @@ namespace Strucna.Controllers
 
         public ActionResult dnevnik_prakse()
         {
-            return View();
+            List<Dnevnik_prakse> lista = new List<Dnevnik_prakse>();
+            foreach (Dnevnik_prakse dok in baza.Dnevnik)
+            {
+                
+                lista.Add(dok);
+
+            }
+            return View(lista);
         }
 
         public ActionResult osobni_podaci()
         {
-            return View();
+            List<Student> lista = baza.Studenti.ToList();
+            return View(lista);
+    
         }
 
         public ActionResult dokumenti()
@@ -80,6 +89,7 @@ namespace Strucna.Controllers
             Student studentToUpdate = baza.Studenti.SingleOrDefault(s => s.id_studnet == id);
             return View(studentToUpdate);
         }
+
         [HttpPost]
 
         public ActionResult Edit(Student s)
@@ -94,8 +104,87 @@ namespace Strucna.Controllers
 
             baza.SaveChanges();
 
-            return View(studentToUpdate);
+            return RedirectToAction("osobni_podaci");
         }
 
+
+
+        [HttpGet]
+        public ActionResult EditDnevnik(int id)
+        {
+            Dnevnik_prakse dnevnikPrakseToUpdate = baza.Dnevnik.SingleOrDefault(dp => dp.id_dnevnik == id);
+            Session["dnevnikID"] = id;
+            return View(dnevnikPrakseToUpdate);
+
+        }
+
+        [HttpPost]
+        public ActionResult EditDnevnik(Dnevnik_prakse d)
+        {
+
+            int broj = (int)Session["dnevnikID"];
+            Dnevnik_prakse dnevnikPrakseToUpdate = baza.Dnevnik.SingleOrDefault(dp => dp.id_dnevnik == broj);
+          
+          
+            dnevnikPrakseToUpdate.naslov = d.naslov;
+            dnevnikPrakseToUpdate.opis = d.opis;
+
+
+
+
+            baza.SaveChanges();
+
+            return RedirectToAction("dnevnik_prakse");
+        }
+
+   
+
+
+        [HttpGet]
+        public ActionResult NoviDnevnik()
+        {
+         
+
+                return View();
+        }
+
+        [HttpPost]
+        public ActionResult NoviDnevnik(Dnevnik_prakse dp)
+        {
+
+            Dnevnik_prakse dpObj = new Dnevnik_prakse();
+            int broj = (int)Session["UserID"];
+
+
+            foreach (Praksa_student praksaStudent in baza.PraksaStudent)
+            {
+                if (praksaStudent.id_student == broj)
+                {
+                    dpObj.id_praksa = praksaStudent.id_praksa;
+                    break;
+                }
+            }
+
+            if (dpObj.id_praksa < 0)
+            {
+                return RedirectToAction("dnevnik_prakse");
+            }
+
+            dpObj.id_student = broj;
+            dpObj.datum = dp.datum;
+            dpObj.naslov = dp.naslov;
+            dpObj.opis = dp.opis;
+
+
+            baza.Dnevnik.Add(dpObj);
+
+            baza.SaveChanges();
+
+
+            return RedirectToAction("dnevnik_prakse");
+
+
+
+        }
     }
 }
