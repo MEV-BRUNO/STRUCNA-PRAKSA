@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Novi Dokument";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+ 
+ 
+
+<body class="padTop53 ">
+<!--PAGE CONTENT -->
+    <div id="content">
+        <div class="inner">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <h2>Novi Dokument</h2>
+                </div>
+            </div>
+            <hr />
+            
+            <div class="table-responsive">
+
+                    @using (Html.BeginForm("noviDokument", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+                        <span>Odaberite datoteku:</span>
+
+                        <input type="file" name="postedFile" />
+                        <br />
+                        <button class="btn btn-danger">Dodaj</button>
+                    }
+                </div>
+            </div>
+        </div>
+ 
+</body>

@@ -12,7 +12,7 @@ namespace Strucna.Models
     {
         [Required]
         [Key]
-        public int id_studija { get; set; }
+        public int id_studij { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
         [Display(Name = "Naziv")]
         public string naziv { get; set; }
