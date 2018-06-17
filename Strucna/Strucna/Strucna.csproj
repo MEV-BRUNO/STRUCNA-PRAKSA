@@ -2251,7 +2251,10 @@
     <Content Include="Views\Admin\logout.cshtml" />
     <Content Include="Views\Login\Reset.cshtml" />
     <Content Include="Views\Student\Edit.cshtml" />
+ 
     <Content Include="Views\Admin\noviDokument.cshtml" />
+ 
+ 
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

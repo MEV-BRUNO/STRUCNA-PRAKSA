@@ -74,5 +74,28 @@ namespace Strucna.Controllers
 
             return View();
         }
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            Student studentToUpdate = baza.Studenti.SingleOrDefault(s => s.id_studnet == id);
+            return View(studentToUpdate);
+        }
+        [HttpPost]
+
+        public ActionResult Edit(Student s)
+        {
+
+            int broj = (int)Session["UserID"];
+            Student studentToUpdate = baza.Studenti.SingleOrDefault(b => b.id_studnet == broj);
+            studentToUpdate.ime_prezime = s.ime_prezime;
+            studentToUpdate.adresa = s.adresa;
+            studentToUpdate.mob = s.mob;
+
+
+            baza.SaveChanges();
+
+            return View(studentToUpdate);
+        }
+
     }
 }
