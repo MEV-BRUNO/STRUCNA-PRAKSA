@@ -152,7 +152,60 @@ namespace Strucna.Controllers
             return View(lista);
         }
 
- 
+        public ActionResult dodajSmjer()
+        {
+
+            return View();
+
+        }
+        [HttpPost]
+        public ActionResult dodajSmjer(Studij studij)
+        {
+
+            baza.Smjerovi.Add(studij);
+            baza.SaveChanges();
+
+            return RedirectToAction("popis_studijskih_programa");
+
+        }
+
+        [HttpGet]
+        public ActionResult deleteSmejer(int id)
+        {
+            Studij studijToDelete = baza.Smjerovi.SingleOrDefault(s => s.id_studij == id);
+
+            baza.Smjerovi.Remove(studijToDelete);
+            baza.SaveChanges();
+
+
+          return RedirectToAction("popis_studijskih_programa");
+        }
+
+
+        public ActionResult editSmjer(string id)
+        {
+            Session["ID"] = id;
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult editSmjer(Studij s)
+        {
+
+
+            string provjera = (string)Session["ID"];
+            int broj = Int32.Parse(provjera);
+           
+            Studij studijToUpdate = baza.Smjerovi.SingleOrDefault(studij => studij.id_studij == broj);
+            studijToUpdate.naziv = s.naziv;
+
+            baza.SaveChanges();
+            Session["ID"] = null;
+            return RedirectToAction("popis_studijskih_programa");
+        }
+
+
 
     }
 }

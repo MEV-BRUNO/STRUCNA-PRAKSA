@@ -2251,10 +2251,11 @@
     <Content Include="Views\Admin\logout.cshtml" />
     <Content Include="Views\Login\Reset.cshtml" />
     <Content Include="Views\Student\Edit.cshtml" />
- 
     <Content Include="Views\Admin\noviDokument.cshtml" />
- 
- 
+    <Content Include="Views\Admin\dodajSmjer.cshtml" />
+    <Content Include="Views\Admin\editSmjer.cshtml" />
+    <Content Include="Views\Student\NoviDnevnik.cshtml" />
+    <Content Include="Views\Student\EditDnevnik.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

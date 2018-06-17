@@ -68,6 +68,7 @@
                     <tbody>
                     @foreach (Poduzece p in Model) { 
                         <tr>
+                            
                             <td class="col-md-1">@p.id_poduzece</td>
                             <td class="col-md-2">@p.naziv</td>
                             <td class="col-md-2">@p.adresa </td>
@@ -75,9 +76,10 @@
                             <td class="col-md-2">@p.kontakt_osoba</td>
                             <td class="col-md-2">@p.URL</td>
                             <td class="col-md-3">
-                                <a href="#" class="btn btn-primary btn-xs btn-grad">Uredi</a>
-                                <a href="#" class="btn btn-info btn-xs btn-grad">Detalji</a>
-                                <a href="#" class="btn btn-danger btn-xs btn-grad">Briši</a>
+
+                                @Html.ActionLink("Uredi", "editPoduzece", new {@id = @p.id_poduzece}, new {@class = "btn btn-primary btn-xs btn-grad"})
+                                @Html.ActionLink("Detalji", "detailsPoduzece", new {@id = @p.id_poduzece}, new {@class = "btn btn-success btn-xs btn-grad"})
+                                @Html.ActionLink("Briši", "deletePoduzece", new {@id = @p.id_poduzece}, new {@class = "btn btn-danger btn-xs btn-grad"})
                             </td>
                         </tr>
                     }

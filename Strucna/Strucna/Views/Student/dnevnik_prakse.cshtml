@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Strucna.Models
+@model IEnumerable<Strucna.Models.Dnevnik_prakse>
+@{
 
     Layout = "~/Views/Shared/_LayoutStudent.cshtml";
 
@@ -41,101 +43,96 @@
 <!-- BEGIN BODY -->
 <body class="padTop53 ">
 
-        <!--PAGE CONTENT -->
-        <div id="content">
-            <div class="inner">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3> Pregled prijava</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-lg-2">
-                                        <div class="form-group">
-                                            <label>Akademska godina:</label>
-                                            <select class="form-control">
-                                                <option>2017./2018.</option>
-                                                <option>2016./2017.</option>
-                                                <option>2015./2016.</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-5">
-                                        <div class="form-group">
-                                            <label>Naziv prakse:</label>
-                                            <select class="form-control">
-                                                <option>Praksa studenata računarstva </option>
-                                                <option>Praksa studenata menadžmenta</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-5">
-                                    </div>
-                                </div> <!--END ROW -->
-                                <br>
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Naslov</th>
-                                                <th>Datum</th>
-                                                <th>Aktivnost</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="col-md-1">1.</td>
-                                                <td class="col-md-7">Praksa 1. dan</td>
-                                                <td class="col-md-2">01.03.2018</td>
-                                                <td class="col-md-2">
-                                                    <a href="#" class="btn btn-primary btn-xs btn-grad">Dokument</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="col-md-1">2.</td>
-                                                <td class="col-md-7">Praksa 2. dan</td>
-                                                <td class="col-md-2">21.03.2018</td>
-                                                <td class="col-md-2">
-                                                    <a href="#" class="btn btn-primary btn-xs btn-grad">Dokument</a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+    <!--PAGE CONTENT -->
+    <div id="content">
+    <div class="inner">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3> Pregled prijava</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            
+                                <div>
+                                  
                                 </div>
+
+                            <div class="col-lg-5">
+                               
+                            </div>
+                            </div> <!--END ROW -->
+                        <br>
+                        <p>
+                            @Html.ActionLink("Novi Dnevnik", "NoviDnevnik", new { @class = "btn btn-primary btn-xs btn-grad" }) 
+                        </p>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Naslov</th>
+                                        <th>Datum</th>
+                                        <th>Aktivnost</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    @foreach (Dnevnik_prakse d in Model)
+                                    {
+                                       
+
+
+
+
+                                        <tr>
+
+                                            <td class="col-md-1">@d.red_broj</td>
+                                            <td class="col-md-8">@d.naslov</td>
+                                            <td class="col-md-8">@d.datum</td>
+                                            <td class="col-md-2">
+
+                                            <button type="submit" class="btn btn-success btn-xs btn-grad">@Html.ActionLink("Uredi", "EditDnevnik", new { id = d.id_dnevnik})</button>
+                                        </tr>
+
+
+
+                                    }
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
         </div>
-        <!--END PAGE CONTENT -->
+
 
     </div>
-    <!--END MAIN WRAPPER -->
-    <!-- FOOTER -->
+    </div>
+        <!--END PAGE CONTENT -->
+        <!--END MAIN WRAPPER -->
+        <!-- FOOTER -->
     <div id="footer">
         <p>&copy;  binarytheme &nbsp;2014 &nbsp;</p>
     </div>
-    <!--END FOOTER -->
-    <!-- GLOBAL SCRIPTS -->
-    <script src="~/assets/plugins/jquery-2.0.3.min.js"></script>
-    <script src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="~/assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-    <!-- END GLOBAL SCRIPTS -->
-    <!-- PAGE LEVEL SCRIPTS -->
-    <script src="~/assets/plugins/dataTables/jquery.dataTables.js"></script>
-    <script src="~/assets/plugins/dataTables/dataTables.bootstrap.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#dataTables-example').dataTable();
-        });
-    </script>
-    <!-- END PAGE LEVEL SCRIPTS -->
+
+        <!--END FOOTER -->
+        <!-- GLOBAL SCRIPTS -->
+        <script src="~/assets/plugins/jquery-2.0.3.min.js"></script>
+        <script src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="~/assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <!-- END GLOBAL SCRIPTS -->
+        <!-- PAGE LEVEL SCRIPTS -->
+        <script src="~/assets/plugins/dataTables/jquery.dataTables.js"></script>
+        <script src="~/assets/plugins/dataTables/dataTables.bootstrap.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#dataTables-example').dataTable();
+            });
+        </script>
+        <!-- END PAGE LEVEL SCRIPTS -->
 </body>
 <!-- END BODY -->
 </html>
