@@ -2,9 +2,10 @@
 @{
     Layout = null;
 }
-
 @using System.Web.Mvc;
+@using Strucna.Models
 @model Strucna.Models.Student
+
 <!DOCTYPE html>
 
 <html>
@@ -20,56 +21,78 @@
     <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
-
             
 
-                <div class="form-group">
-                    <a href='@Url.Action("Index", "Home")'>
-                        <img src="~/assets/img/logo.png" class="center-block" alt="" />
-                    </a>
-                    <div class="margina">
-                        <form method="post" action="">
-                            <p class="well well-sm" style="background: #0d70b7; color:white; text-align: center; ">Ispunite podatke za registraciju</p>
-                            <p>
-                                @Html.LabelFor(model => model.ime_prezime, new { @class = "control-label" })
-                                @Html.EditorFor(model => model.ime_prezime, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.ime_prezime, "", new { @class = "text-danger" })
-                            </p>
-                            <p>
-                                @Html.LabelFor(model => model.adresa, new { @class = "control-label" })
-                                @Html.EditorFor(model => model.adresa, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.adresa, "", new { @class = "text-danger" })
-                            </p>
-                            <p>
-                                @Html.LabelFor(model => model.mob, new { @class = "control-label" })
-                                @Html.EditorFor(model => model.mob, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.mob, "", new { @class = "text-danger" })
-                            </p>
-                            <p>
-                                @Html.LabelFor(model => model.email, new { @class = "control-label" })
-                                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
-                            </p>
-                            <p>
-                                @Html.LabelFor(model => model.lozinka, new { @class = "control-label" })
-                                @Html.PasswordFor(model => model.lozinka, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.lozinka, "", new { @class = "text-danger" })
-                            </p>
-                            <p>
-                                @Html.LabelFor(model => model.lozinka, new { @class = "control-label" })
-                                @Html.PasswordFor(model => model.lozinka, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.lozinka, "", new { @class = "text-danger" })
-                            </p>
-                            <p>
-                                <input type="radio" name="redovni" value="Redovni"> Redovni<br>
-                                <input type="radio" name="redovni" value="Izvanredni"> Izvanredni<br>
-                            </p>
-                            <button class="btn btn-success">Registracija</button>
-                        </form>
-                    </div>
+
+            @using (Html.BeginForm())
+            {
+              @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                <a href='@Url.Action("Index", "Home")'>
+                    <img src="~/assets/img/logo.png" class="center-block" alt=""/>
+                </a>
+                <div class="margina">
+                    <form method="post" action="">
+                        <p class="well well-sm" style="background: #0d70b7; color: white; text-align: center;">Ispunite podatke za registraciju</p>
+                        <p>
+                            @Html.LabelFor(model => model.ime_prezime, new { @class = "control-label" })
+                            @Html.EditorFor(model => model.ime_prezime, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ime_prezime, "", new { @class = "text-danger" })
+                        </p>
+                        <p>
+                            @Html.LabelFor(model => model.adresa, new { @class = "control-label" })
+                            @Html.EditorFor(model => model.adresa, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.adresa, "", new { @class = "text-danger" })
+                        </p>
+                        <p>
+                            @Html.LabelFor(model => model.mob, new { @class = "control-label" })
+                            @Html.EditorFor(model => model.mob, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.mob, "", new { @class = "text-danger" })
+                        </p>
+                        <p>
+                            @Html.LabelFor(model => model.email, new { @class = "control-label" })
+                            @ViewBag.email
+                            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                        </p>
+                        <p>
+                            @Html.LabelFor(model => model.lozinka, new { @class = "control-label" })
+                            @ViewBag.lozinka
+                            @Html.PasswordFor(model => model.lozinka, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.lozinka, "", new { @class = "text-danger" })
+                        </p>
+                        <p>
+                            @Html.LabelFor(model => model.ConfirmLozinka, new { @class = "control-label" })
+                            @ViewBag.lozinka
+                            @Html.PasswordFor(model => model.ConfirmLozinka, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ConfirmLozinka, "", new { @class = "text-danger" })
+                        </p>
+                        <p>
+                            @Html.RadioButtonFor(model => model.izvanredni, 0) Redovni
+                            @Html.RadioButtonFor(model => model.izvanredni, 1) Izvanredni
+                        </p>
+                        <p>
+                            
+                            @Html.LabelFor(model => model.id_studij)<br />
+                            @Html.RadioButtonFor(model => model.id_studij, 0) Računarstvo
+                            @Html.RadioButtonFor(model => model.id_studij, 1) Menadment
+                            @Html.RadioButtonFor(model => model.id_studij, 2) Održivi
+
+
+
+                        </p>
+                         
+
+                         
+                        <button class="btn btn-success">Registracija</button>
+                    </form>
                 </div>
-
-            
+            </div>
+        }
+            @section Scripts {
+                @Scripts.Render("~/Scripts/jquery.validate")
+            }
 
                 <div class="row">
                     <div class="login" style="float:initial">

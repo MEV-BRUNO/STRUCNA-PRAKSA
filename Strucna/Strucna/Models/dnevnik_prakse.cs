@@ -12,6 +12,7 @@ namespace Strucna.Models
     {
         [Required]
         [Key]
+        
         public int id_praksa { get; set; }
         public int id_student { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]

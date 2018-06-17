@@ -12,20 +12,24 @@ namespace Strucna.Models
     {
         [Required]
         [Key]
-
         public int id_poduzece { get; set; }
+
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
-        [Display(Name = "Naziv")]
+        [Display(Name = "Naziv firme")]
         public string naziv { get; set; }
+
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
-        [Display(Name = "Adresa")]
+        [Display(Name = "Adresa poduzeća")]
         public string adresa { get; set; }
+
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
-        [Display(Name = "Grad")]
+        [Display(Name = "Mjest/grad")]
         public string grad { get; set; }
+
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
-        [Display(Name = "Opis")]
+        [Display(Name = "Opis poslova")]
         public string opis { get; set; }
+
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
         [Display(Name = "Kontakt osoba")]
         public string kontakt_osoba { get; set; }
@@ -33,8 +37,9 @@ namespace Strucna.Models
         [Display(Name = "Telefon")]
         public string tel { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
-        [Display(Name = "Email")]
+        [Display(Name = "Email poduzeća")]
         public string email { get; set; }
+
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
         [Display(Name = "URL")]
         public string URL { get; set; }

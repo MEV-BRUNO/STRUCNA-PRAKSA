@@ -9,7 +9,7 @@ namespace Strucna.Models
 {
     [Table("mentor")]
     public class Mentor {
-        internal object mail;
+ 
 
         [Required]
         [Key]
@@ -22,12 +22,20 @@ namespace Strucna.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
         [Display(Name = "Email adresa")]
         public string email { get; set; }
+
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
         [Display(Name = "Lozinka")]
         public string lozinka { get; set; }
-      
+
+        [NotMapped]
+         
+        [Display(Name = "Ponovite Lozinku")]
+        public string ConfirmLozinka { get; set; }
+
         [Display(Name = "ID studij")]
         public int id_studij { get; set; }
+
+        public string password_reset { get; set; }
 
     }
 }
