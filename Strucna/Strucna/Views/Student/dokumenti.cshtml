@@ -3,7 +3,8 @@
     Layout = "~/Views/Shared/_LayoutStudent.cshtml";
 
 }
-
+@using Strucna.Models
+@model IEnumerable<Strucna.Models.Dokumenti>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
@@ -41,55 +42,47 @@
 <!-- BEGIN BODY -->
 <body class="padTop53 ">
 
-        <!--PAGE CONTENT -->
-        <div id="content">
-            <div class="inner">
-                <div class="row">
-                    <div class="col-lg-12">
+    <!--PAGE CONTENT -->
+    <div id="content">
+        <div class="inner">
+            <div class="row">
+                <div class="col-lg-12">
 
-                        <h2> Dokumenti </h2>
+                    <h2> Dokumenti </h2>
 
-                    </div>
                 </div>
-                <hr />
-                <p>
-                     
-                </p>
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Naziv dokumenta</th>
-                                <th>Aktivnost</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="col-md-1">1.</td>
-                                <td class="col-md-8">Pravilnik o provođenju stručne prakse</td>
-                                <td class="col-md-2">
-                                    <a href="#" class="btn btn-primary btn-xs btn-grad">Preuzmi</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-1">2.</td>
-                                <td class="col-md-8">Prijava prakse</td>
-                                <td class="col-md-2">
-                                    <a href="#" class="btn btn-primary btn-xs btn-grad">Preuzmi</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            </div>
+            <hr />
+            <p>
 
+            </p>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Naziv dokumenta</th>
+                        <th>Aktivnost</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (Dokumenti d in Model) { 
+                        <tr>
+                            <td class="col-md-1">@d.id_dokument</td>
+                            <td class="col-md-8">@d.naziv</td>
+                            <td class="col-md-2">
+                            <a href="" class="btn btn-primary btn-xs btn-grad">Preuzmi</a>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
             </div>
 
-
         </div>
-        <!--END PAGE CONTENT -->
 
-    
+
+    </div>
+    <!--END PAGE CONTENT -->
     <!--END MAIN WRAPPER -->
     <!-- FOOTER -->
     <div id="footer">

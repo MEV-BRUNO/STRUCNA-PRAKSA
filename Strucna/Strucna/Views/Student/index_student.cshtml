@@ -3,13 +3,94 @@
     ViewBag.Title = "index_student";
     Layout = "~/Views/Shared/_LayoutStudent.cshtml";
 }
+@using Strucna.Models
+@model IEnumerable<Strucna.Models.VratiStudente>
 <!DOCTYPE html>
 <html>
 <head>
 </head>
-<body>
-<h2>index_student</h2>
+<body class="padTop53 ">
+    <!--PAGE CONTENT -->
+    <div id="content">
+        <div class="inner">
+            <div class="row">
+                <div class="col-lg-12">
 
- 
+                    <h2> WELCOME STUDENT @Session["Username"] </h2>
+
+                </div>
+            </div>
+            <hr />
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3>Trenutno stanje @Session["Username"] prijavljenih praksa</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Prezime i ime studenta</th>
+                                            <th>Naziv poduzeća</th>
+                                            <th>Trajanje</th>
+                                            <th>Odobrena</th>
+                                            <th>Ocjena</th>
+                                             
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach (VratiStudente a in Model)
+                                        {
+                                            if (a.id_student ==(int)Session["UserID"]) { 
+                                                <tr>
+                                                    <td class="col-md-1">@a.id_student </td>
+                                                    <td class="col-md-3">@a.ime  </td>
+                                                    <td class="col-md-2">@a.poduzece</td>
+                                                    <td class="col-md-2">Od: @a.datoum_od<br>Do: @a.datoum_do</td>
+                                                    <td class="col-md-1">@a.odobreno</td>
+                                                    <td class="col-md-1">@a.ocjena</td>
+                                                  
+                                                </tr>
+                                            }
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!--END PAGE CONTENT -->
+    <!--END MAIN WRAPPER -->
+    <!-- FOOTER -->
+    <div id="footer">
+        <p>&copy;  binarytheme &nbsp;2014 &nbsp;</p>
+    </div>
+    <!--END FOOTER -->
+    <!-- GLOBAL SCRIPTS -->
+    <script src="~/assets/plugins/jquery-2.0.3.min.js"></script>
+    <script src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <!-- END GLOBAL SCRIPTS -->
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="~/assets/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="~/assets/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dataTables-example').dataTable();
+        });
+    </script>
+    <!-- END PAGE LEVEL SCRIPTS -->
 </body>
 </html>
