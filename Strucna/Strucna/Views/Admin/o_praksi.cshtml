@@ -1,13 +1,14 @@
-﻿@using Strucna.Baza_povezivanje
-@using Strucna.Models
+﻿
 @{
 
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-        
-        
+
+
 
 }
-@model IEnumerable<Strucna.Models.Student>
+ 
+@using Strucna.Models
+@model IEnumerable<Strucna.Models.VratiStudente>
 
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -80,15 +81,15 @@
                                     </thead>
                                     <tbody>
 
-                                        @foreach (Student a in Model)
+                                        @foreach (VratiStudente a in Model)
                                         {
                                             <tr>
-                                                <td class="col-md-1">@a.id_studnet </td>
-                                                <td class="col-md-3">@a.ime_prezime  </td>
-                                                <td class="col-md-2">Informatika GLS d.o.o.</td>
-                                                <td class="col-md-2">Od:01.03.2017<br>Do:01.05.2017</td>
-                                                <td class="col-md-1">Da</td>
-                                                <td class="col-md-1">Pozitivno</td>
+                                                <td class="col-md-1">@a.id_student </td>
+                                                <td class="col-md-3">@a.ime  </td>
+                                                <td class="col-md-2">@a.poduzece</td>
+                                                <td class="col-md-2">Od: @a.datoum_od<br>Do: @a.datoum_do</td>
+                                                <td class="col-md-1">@a.odobreno</td>
+                                                <td class="col-md-1">@a.ocjena</td>
                                                 <td class="col-md-2">
                                                     <a href="#" class="btn btn-primary btn-xs btn-grad">Uredi</a>
                                                     <a href="#" class="btn btn-info btn-xs btn-grad">Ocjena</a>
@@ -96,9 +97,9 @@
                                                     <a href="#" class="btn btn-danger btn-xs btn-grad">Briši</a>
                                                 </td>
                                             </tr>
-                                                }
-                                                                                       
-                                        </tbody>
+                                        }
+
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -110,7 +111,6 @@
 
     </div>
     <!--END PAGE CONTENT -->
-     
     <!--END MAIN WRAPPER -->
     <!-- FOOTER -->
     <div id="footer">

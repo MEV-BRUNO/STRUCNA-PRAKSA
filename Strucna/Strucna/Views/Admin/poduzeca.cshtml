@@ -3,7 +3,8 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 
 }
-
+@using Strucna.Models
+@model IEnumerable<Strucna.Models.Poduzece>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
@@ -65,32 +66,22 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @foreach (Poduzece p in Model) { 
                         <tr>
-                            <td class="col-md-1">1.</td>
-                            <td class="col-md-2">Informatika GLS d.o.o.</td>
-                            <td class="col-md-2">Zagrebačka 12<br>40000 Čakovec</td>
-                            <td class="col-md-1">098125478<br>info@info.hr</td>
-                            <td class="col-md-2">Vanja Novak, direktor</td>
-                            <td class="col-md-2">www.info.hr</td>
+                            <td class="col-md-1">@p.id_poduzece</td>
+                            <td class="col-md-2">@p.naziv</td>
+                            <td class="col-md-2">@p.adresa </td>
+                            <td class="col-md-1">@p.tel<br>@p.email</td>
+                            <td class="col-md-2">@p.kontakt_osoba</td>
+                            <td class="col-md-2">@p.URL</td>
                             <td class="col-md-3">
                                 <a href="#" class="btn btn-primary btn-xs btn-grad">Uredi</a>
                                 <a href="#" class="btn btn-info btn-xs btn-grad">Detalji</a>
                                 <a href="#" class="btn btn-danger btn-xs btn-grad">Briši</a>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="col-md-1">2.</td>
-                            <td class="col-md-2">Informatika GLS d.o.o.</td>
-                            <td class="col-md-2">Zagrebačka 12<br>40000 Čakovec</td>
-                            <td class="col-md-1">098125478<br>info@info.hr</td>
-                            <td class="col-md-2">Vanja Novak, direktor</td>
-                            <td class="col-md-2">www.info.hr</td>
-                            <td class="col-md-3">
-                                <a href="#" class="btn btn-primary btn-xs btn-grad">Uredi</a>
-                                <a href="#" class="btn btn-info btn-xs btn-grad">Detalji</a>
-                                <a href="#" class="btn btn-danger btn-xs btn-grad">Briši</a>
-                            </td>
-                        </tr>
+                    }
+                     
                     </tbody>
                 </table>
             </div>

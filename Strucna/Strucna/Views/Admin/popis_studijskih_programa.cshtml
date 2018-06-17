@@ -3,7 +3,8 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 
 }
-
+@using Strucna.Models
+@model IEnumerable<Strucna.Models.Studij>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
@@ -50,31 +51,11 @@
                             <h3> Pregled prijava</h3>
                         </div>
                         <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-2">
-                                    <div class="form-group">
-                                        <label>Akademska godina:</label>
-                                        <select class="form-control">
-                                            <option>2017./2018.</option>
-                                            <option>2016./2017.</option>
-                                            <option>2015./2016.</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-5">
-                                    <div class="form-group">
-                                        <label>Naziv prakse:</label>
-                                        <select class="form-control">
-                                            <option>Praksa studenata računarstva </option>
-                                            <option>Praksa studenata menadžmenta</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-5">
-                                </div>
-                            </div> <!--END ROW -->
+                            
                             <br>
-
+                            <p>
+                                <a href="#" class="btn btn-primary btn-xs btn-grad">Dodaj smjer </a>
+                            </p>
                             <div class="table-responsive">
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -86,22 +67,17 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        @foreach(Studij s in Model) { 
                                             <tr>
-                                                <td class="col-md-1">1.</td>
-                                                <td class="col-md-8">Studj računarstva</td>
+                                                <td class="col-md-1">@s.id_studij</td>
+                                                <td class="col-md-8">@s.naziv</td>
                                                 <td class="col-md-3">
                                                     <a href="#" class="btn btn-primary btn-xs btn-grad">Uredi</a>
                                                     <a href="#" class="btn btn-danger btn-xs btn-grad">Briši</a>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td class="col-md-1">1.</td>
-                                                <td class="col-md-8">Studij menadžmenta</td>
-                                                <td class="col-md-3">
-                                                    <a href="#" class="btn btn-primary btn-xs btn-grad">Uredi</a>
-                                                    <a href="#" class="btn btn-danger btn-xs btn-grad">Briši</a>
-                                                </td>
-                                            </tr>
+                                        }
+                                         
                                         </tbody>
                                     </table>
                                 </div>

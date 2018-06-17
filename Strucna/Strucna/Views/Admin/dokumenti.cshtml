@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Strucna.Models
+@model IEnumerable<Strucna.Models.Dokumenti>
+
+@{
 
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 
@@ -52,7 +55,7 @@
             </div>
             <hr />
             <p>
-                <a href="#" class="btn btn-primary btn-xs btn-grad">Novi dokument </a>
+                <a href="noviDokument" class="btn btn-primary btn-xs btn-grad">Novi dokument </a>
             </p>
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -64,20 +67,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="col-md-1">1.</td>
-                            <td class="col-md-8">Pravilnik o provođenju stručne prakse</td>
-                            <td class="col-md-2">
-                                <a href="#" class="btn btn-primary btn-xs btn-grad">Preuzmi</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-1">2.</td>
-                            <td class="col-md-8">Prijava prakse</td>
-                            <td class="col-md-2">
-                                <a href="#" class="btn btn-primary btn-xs btn-grad">Preuzmi</a>
-                            </td>
-                        </tr>
+                        @foreach (Dokumenti d in Model) { 
+                            <tr>
+                                <td class="col-md-1">@d.id_dokument</td>
+                                <td class="col-md-8">@d.naziv</td>
+                                <td class="col-md-2">
+                                <a href="" class="btn btn-primary btn-xs btn-grad">Preuzmi</a>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>
@@ -87,7 +84,7 @@
 
     </div>
     <!--END PAGE CONTENT -->
-    </div>
+ 
     <!--END MAIN WRAPPER -->
     <!-- FOOTER -->
     <div id="footer">

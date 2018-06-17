@@ -22,5 +22,9 @@ namespace Strucna.Baza_povezivanje
         public DbSet<Poduzece> Poduzeca { get; set; }
 
         public DbSet<Praksa_student> PraksaStudent { get; set; }
+
+        public DbSet<Studij> Smjerovi { get; set; }
+
+        public DbSet<Dokumenti> Dokument { get; set; }
     }
 }
