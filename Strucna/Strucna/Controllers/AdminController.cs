@@ -167,7 +167,14 @@ namespace Strucna.Controllers
             return RedirectToAction("strucna_praksa");
         }
 
-
+        public FileResult Download(int id)
+        {
+            Dokumenti dok = baza.Dokument.SingleOrDefault(s => s.id_dokument == id);
+             
+            byte[] fileBytes = System.IO.File.ReadAllBytes(dok.put);
+            string fileName = dok.naziv;
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+        }
 
         public ActionResult o_praksi()
         {

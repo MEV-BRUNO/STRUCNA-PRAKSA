@@ -71,7 +71,8 @@
                             <td class="col-md-1">@d.id_dokument</td>
                             <td class="col-md-8">@d.naziv</td>
                             <td class="col-md-2">
-                            <a href="" class="btn btn-primary btn-xs btn-grad">Preuzmi</a>
+                                @Html.ActionLink("Preuzmi", "Download", new { id = d.id_dokument}, new { @class = "btn btn-primary btn-xs btn-grad" })
+                            </td>
                         </tr>
                     }
                     </tbody>

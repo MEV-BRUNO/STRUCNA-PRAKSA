@@ -1,8 +1,26 @@
 ﻿
 @{
     Layout = null;
+    strucnapraksa baza = new strucnapraksa();
+    var listaStudij = new List<SelectListItem>();
+
+    List<Studij> lista = baza.Smjerovi.ToList();
+
+
+    foreach (Studij studij in lista)
+    {
+        listaStudij.Add(new SelectListItem
+        {
+            Value = studij.id_studij.ToString(),
+
+            Text = studij.naziv
+
+        });
+    }
 }
 @using System.Web.Mvc;
+@using Strucna.Baza_povezivanje
+@using Strucna.Models
 @model Strucna.Models.Mentor
 
 <!DOCTYPE html>
@@ -57,10 +75,9 @@
                             @Html.ValidationMessageFor(model => model.ConfirmLozinka, "", new { @class = "text-danger" })
                         </p>
                         <p>
-                            @Html.LabelFor(model => model.id_studij)<br />
-                            @Html.RadioButtonFor(model => model.id_studij, 0) Računarstvo
-                            @Html.RadioButtonFor(model => model.id_studij, 1) Menadment
-                            @Html.RadioButtonFor(model => model.id_studij, 2) Održivi
+                            @Html.LabelFor(model => model.id_studij, new { @class = "control-label" })
+                            @Html.DropDownListFor(model => model.id_studij, listaStudij, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.id_studij, "", new { @class = "text-danger" })
                         </p>
 
 
