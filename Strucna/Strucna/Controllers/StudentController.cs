@@ -11,6 +11,16 @@ namespace Strucna.Controllers
     public class StudentController : Controller
     {
         strucnapraksa baza = new strucnapraksa();
+
+        public FileResult Download(int id)
+        {
+            Dokumenti dok = baza.Dokument.SingleOrDefault(s => s.id_dokument == id);
+
+            byte[] fileBytes = System.IO.File.ReadAllBytes(dok.put);
+            string fileName = dok.naziv;
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+        }
+
         public ActionResult index_student()
         {
             List<VratiStudente> lista = new List<VratiStudente>();
