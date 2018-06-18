@@ -2263,6 +2263,11 @@
     <Content Include="Views\Admin\editPraksa.cshtml" />
     <Content Include="Views\Admin\deletePraksa.cshtml" />
     <Content Include="Views\Student\prijava_prakse.cshtml" />
+    <Content Include="Views\Admin\dnevnik.cshtml" />
+    <Content Include="Views\Admin\dnevnikDetalji.cshtml" />
+    <Content Include="Views\Admin\editPoduzeca.cshtml" />
+    <Content Include="Views\Admin\detailsPoduzeca.cshtml" />
+    <Content Include="Views\Admin\deletePoduzeca.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
