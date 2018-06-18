@@ -2268,6 +2268,9 @@
     <Content Include="Views\Admin\editPoduzeca.cshtml" />
     <Content Include="Views\Admin\detailsPoduzeca.cshtml" />
     <Content Include="Views\Admin\deletePoduzeca.cshtml" />
+    <Content Include="Views\Admin\editStudent.cshtml" />
+    <Content Include="Views\Admin\approveStudent.cshtml" />
+    <Content Include="Views\Admin\gradeStudent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

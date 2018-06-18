@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.Mvc;
 using Strucna.Baza_povezivanje;
@@ -196,7 +197,7 @@ namespace Strucna.Controllers
                 {
                     a.ocjena = "Pozitivno";
                 }
-                else
+                else if(praksa.ocjena == 2)
                 {
                     a.ocjena = "Negativno";
                 }
@@ -214,7 +215,7 @@ namespace Strucna.Controllers
 
                 foreach (Poduzece poduzece in listaSPoduzeca)
                 {
-                    if (poduzece.id_poduzece == praksa.id_student)
+                    if (poduzece.id_poduzece == praksa.id_poduzece)
                     {
 
                         a.poduzece = poduzece.naziv;
@@ -231,7 +232,36 @@ namespace Strucna.Controllers
             return View(lista);
         }
 
-  
+        public ActionResult approveStudent(int id)
+        {
+
+            Praksa_student studentToUpdate = baza.PraksaStudent.SingleOrDefault(s => s.id_student == id);
+            if (studentToUpdate.odobreno == 0)
+            {
+                studentToUpdate.odobreno = 1;
+
+            }
+            else
+            {
+                studentToUpdate.odobreno = 0;
+            }
+
+            baza.SaveChanges();
+
+            return RedirectToAction("o_praksi");
+
+        }
+
+        public ActionResult deleteStudent(int id)
+        {
+            Praksa_student sutdentToDelete = baza.PraksaStudent.SingleOrDefault(s => s.id_student == id);
+
+            baza.PraksaStudent.Remove(sutdentToDelete);
+            baza.SaveChanges();
+
+
+            return RedirectToAction("o_praksi");
+        }
 
         public ActionResult dokumenti()
         {
@@ -242,6 +272,23 @@ namespace Strucna.Controllers
         {
         
             return View();
+        }
+
+        public ActionResult gradeStudent(int id)
+        {
+            Session["gradeID"] = id;
+            Praksa_student ps = baza.PraksaStudent.SingleOrDefault(s => s.id_student == id);
+            return View(ps);
+        }
+        [HttpPost]
+        public ActionResult gradeStudent(Praksa_student praksaStudent)
+        {
+            int id =(int)Session["gradeID"];
+            Praksa_student ps = baza.PraksaStudent.SingleOrDefault(s => s.id_student == id);
+            ps.ocjena = praksaStudent.ocjena;
+         
+            baza.SaveChanges();
+            return RedirectToAction("o_praksi");
         }
         [HttpPost]
         public ActionResult noviDokument(HttpPostedFileBase postedFile)
@@ -332,6 +379,25 @@ namespace Strucna.Controllers
 
 
             return RedirectToAction("poduzeca");
+        }
+
+        public ActionResult editStudent(int id)
+        {
+            Session["editStud"] = id;
+            Student studentToUpdate = baza.Studenti.SingleOrDefault(s => s.id_studnet == id);
+
+
+            return View(studentToUpdate);
+        }
+        [HttpPost]
+        public ActionResult editStudent(Student stud)
+        {
+            int id =(int)Session["editStud"];
+            Student studentToUpdate = baza.Studenti.SingleOrDefault(s => s.id_studnet == id);
+            studentToUpdate.id_studij = stud.id_studij;
+            studentToUpdate.izvanredni = stud.izvanredni;
+
+            return View();
         }
         [HttpPost]
         public ActionResult dodajSmjer(Studij studij)

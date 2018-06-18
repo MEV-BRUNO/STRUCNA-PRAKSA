@@ -92,11 +92,13 @@
                                                 <td class="col-md-1">@a.odobreno</td>
                                                 <td class="col-md-1">@a.ocjena</td>
                                                 <td class="col-md-2">
-                                                    <a href="#" class="btn btn-primary btn-xs btn-grad">Uredi</a>
-                                                    <a href="#" class="btn btn-danger btn-xs btn-grad">Briši</a>
+                                                    @Html.ActionLink("Detalji", "editStudent", new { id = a.id_student}, new { @class = "btn btn-primary btn-xs btn-grad" })
+                                                    @Html.ActionLink("Odobri", "approveStudent", new { id = a.id_student}, new { @class = "btn btn-info btn-xs btn-grad" })
+
+                                                    @Html.ActionLink("Obriši", "deleteStudent", new { id = a.id_student}, new { @class = "btn btn-danger btn-xs btn-grad" })
                                                     <br/>
                                                     <br/>
-                                                    <a href="#" class="btn btn-info btn-xs btn-grad">Ocjena</a>
+                                                    @Html.ActionLink("Ocjena", "gradeStudent", new { id = a.id_student}, new { @class = "btn btn-info btn-xs btn-grad" })
                                                    
                                                     @Html.ActionLink("Dnevnik", "dnevnik", new { id = a.id_student}, new { @class = "btn btn-success btn-xs btn-grad" })
                                                    
