@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "gradeStudent";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model Strucna.Models.Praksa_student
+
+
+<body class="padTop53 ">
+<!--PAGE CONTENT -->
+<div id="content">
+    <div class="inner">
+        <div class="row">
+            <div class="col-lg-12">
+
+
+            </div>
+        </div>
+        <hr />
+        <div class="col-lg-3">
+
+
+           
+            <div class="table-responsive">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+
+
+                        <form method="post" action="">
+                            <p>
+
+                                @Html.LabelFor(model => model.ocjena, new { @class = "control-label" })
+                                <br/>
+                                @Html.RadioButtonFor(model => model.ocjena, 0) Neocjenjeno
+                                <br/>
+                                @Html.RadioButtonFor(model => model.ocjena, 1) Pozitivno
+                                <br/>
+                                @Html.RadioButtonFor(model => model.ocjena, 2) Negativno
+
+                            </p>
+                        
+
+                            <button class="btn btn-danger">Uredi</button>
+
+                        </form>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+
