@@ -54,21 +54,13 @@
                 <ul class="nav navbar-top-links navbar-right">
                     <!--ADMIN SETTINGS SECTIONS -->
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="icon-user "></i>&nbsp; <i class="icon-chevron-down "></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
+                        
+                        
+                          
                             <li>
-                                <a href="#"><i class="icon-user"></i> Korisničk profil </a>
+                                @Html.ActionLink("Odjava", "logout", new { @class = "icon-signout" })
                             </li>
-                            <li>
-                                <a href="#"><i class="icon-gear"></i> Osobne postavke </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="logout.html"><i class="icon-signout"></i> Odjava </a>
-                            </li>
-                        </ul>
+                         
                     </li>
                     <!--END ADMIN SETTINGS -->
                 </ul>
@@ -113,7 +105,9 @@
 
 
             </ul>
+           
         </div>
+        
         <!--END MENU SECTION -->
         @RenderBody()
     </div>

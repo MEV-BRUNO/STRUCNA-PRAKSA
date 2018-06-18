@@ -107,7 +107,40 @@ namespace Strucna.Controllers
             return View(lista);
         }
 
+        [HttpGet]
+        public ActionResult prijava_prakse()
+        {
+            Praksa_student p = new Praksa_student();
 
+            return View(p);
+        }
+
+        [HttpPost]
+        public ActionResult prijava_prakse(Praksa_student p)
+        {
+            int broj = (int) Session["UserID"];
+            Praksa datum = baza.Prakse.SingleOrDefault(s => s.id_praksa == p.id_praksa);
+
+
+            p.id_student = broj;
+            p.datum_do = datum.datum_do;
+            p.datum_od = datum.datum_od;
+           
+            if (ModelState.IsValid)
+            {
+
+                baza.PraksaStudent.Add(p);
+                baza.SaveChanges();
+
+                return RedirectToAction("index_student");
+            }
+            else
+            {
+                throw new ArgumentException();
+            }
+
+
+        }
         [HttpGet]
         public ActionResult prijava_studenta()
         {
@@ -118,20 +151,13 @@ namespace Strucna.Controllers
 
          [HttpPost]
         public ActionResult prijava_studenta(Poduzece p)
-        {
+         {
+
+             List<Praksa> listaPrkse = baza.Prakse.ToList();
 
             if (ModelState.IsValid)
             {
-            Praksa_student ps = new Praksa_student();
-                ps.datum_od = DateTime.Today;
-                ps.datum_do = ps.datum_od.AddDays(30);
-                ps.id_poduzece = p.id_poduzece;
-                ps.id_student = (int) Session["UserID"];
-                ps.odobreno = 0;
-
-
-            baza.PraksaStudent.Add(ps);
-                baza.SaveChanges();
+        
                 baza.Poduzeca.Add(p);
             baza.SaveChanges();
 
@@ -142,7 +168,7 @@ namespace Strucna.Controllers
                 throw new ArgumentException();
             }
 
-            return View();
+ 
         }
         [HttpGet]
         public ActionResult Edit(int id)

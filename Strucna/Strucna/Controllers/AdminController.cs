@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -31,10 +34,115 @@ namespace Strucna.Controllers
         }
         public ActionResult strucna_praksa()
         {
-            return View();
+            List<VratiPrakse> vrati = new List<VratiPrakse>();
+            List<Mentor> mentori = baza.Mentori.ToList();
+            List<Studij> studiji = baza.Smjerovi.ToList();
+
+            foreach (Praksa praksa in baza.Prakse.ToList())
+            {
+                VratiPrakse privemeno = new VratiPrakse();
+                privemeno.id_praksa = praksa.id_praksa;
+                privemeno.naziv = praksa.naziv;
+                privemeno.datoum_do = praksa.datum_do.ToString();
+                privemeno.datoum_od = praksa.datum_od.ToString();
+                if (praksa.zavrsena == 0)
+                {
+                    privemeno.zavrsena = "NE";
+
+                }
+                else
+                {
+                    privemeno.zavrsena = "DA";
+                }
+
+                foreach (Mentor mentor in mentori)
+                {
+                    if (mentor.id_mentor == praksa.id_mentor )
+                    {
+                        privemeno.mentor = mentor.ime_prezime;
+                    }
+                }
+                foreach (Studij studij in studiji)
+                {
+                    if (studij.id_studij == praksa.id_studij)
+                    {
+                        privemeno.studij = studij.naziv;
+                    }
+                }
+
+                vrati.Add(privemeno);
+
+            }
+           
+
+            return View(vrati);
         }
 
-    
+        public ActionResult editPraksa(int id)
+        {
+            Session["editPID"] = id;
+  
+            Praksa praksaToUpdate = baza.Prakse.SingleOrDefault(s => s.id_praksa == id);
+            return View(praksaToUpdate);
+ 
+
+        }
+
+        [HttpPost]
+        public ActionResult editPraksa(Praksa p)
+        {
+           
+            int studijID = (int)Session["editPID"];
+
+            Praksa praksaToUpdate = baza.Prakse.SingleOrDefault(s => s.id_praksa == studijID);
+            praksaToUpdate.id_mentor = p.id_mentor;
+            praksaToUpdate.id_studij = p.id_studij;
+            praksaToUpdate.datum_od = p.datum_od;
+            praksaToUpdate.datum_do = p.datum_do;
+            praksaToUpdate.naziv = p.naziv;
+            praksaToUpdate.zavrsena = p.zavrsena;
+
+            baza.SaveChanges();
+            Session["editPID"] = null;
+            return RedirectToAction("strucna_praksa");
+
+
+        }
+
+        public ActionResult addPraksa()
+        {
+
+           
+            
+ 
+            return View( );
+
+        }
+        [HttpPost]
+        public ActionResult addPraksa(Praksa p)
+        {
+
+            baza.Prakse.Add(p);
+            baza.SaveChanges();
+
+
+            return RedirectToAction("strucna_praksa");
+
+        }
+
+        [HttpGet]
+        public ActionResult deletePraksa(int id)
+        {
+            Praksa praksaToDelete = baza.Prakse.SingleOrDefault(s => s.id_praksa == id);
+
+            baza.Prakse.Remove(praksaToDelete);
+            baza.SaveChanges();
+
+
+            return RedirectToAction("strucna_praksa");
+        }
+
+
 
         public ActionResult o_praksi()
         {
@@ -43,7 +151,7 @@ namespace Strucna.Controllers
             List<Poduzece> listaSPoduzeca = baza.Poduzeca.ToList();
             foreach (Praksa_student praksa in baza.PraksaStudent)
             {
-               VratiStudente a = new VratiStudente();
+                VratiStudente a = new VratiStudente();
 
                 a.datoum_od = praksa.datum_od.ToString();
                 a.datoum_do = praksa.datum_do.ToString();
@@ -84,13 +192,12 @@ namespace Strucna.Controllers
                 {
                     if (poduzece.id_poduzece == praksa.id_student)
                     {
-                        
+
                         a.poduzece = poduzece.naziv;
 
 
                     }
                 }
-
 
                 lista.Add(a);
 
@@ -185,8 +292,9 @@ namespace Strucna.Controllers
         public ActionResult editSmjer(string id)
         {
             Session["ID"] = id;
-
-            return View();
+            int studijID = Int32.Parse(id);
+            Studij studijToUpdate = baza.Smjerovi.SingleOrDefault(s => s.id_studij == studijID);
+            return View(studijToUpdate);
         }
 
         [HttpPost]

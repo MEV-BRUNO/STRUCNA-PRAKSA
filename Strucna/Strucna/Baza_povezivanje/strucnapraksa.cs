@@ -28,5 +28,7 @@ namespace Strucna.Baza_povezivanje
         public DbSet<Dokumenti> Dokument { get; set; }
 
         public DbSet<Dnevnik_prakse> Dnevnik { get; set; }
+
+        public DbSet<Praksa> Prakse { get; set; }
     }
 }
