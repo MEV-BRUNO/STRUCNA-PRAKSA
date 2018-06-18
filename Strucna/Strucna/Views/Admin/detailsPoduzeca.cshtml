@@ -1,14 +1,9 @@
-﻿
+﻿@using Strucna.Models
+@model IEnumerable<Strucna.Models.Poduzece>
 @{
-
+    ViewBag.Title = "detailsPoduzeca";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-
-
-
 }
- 
-@using Strucna.Models
-@model IEnumerable<Strucna.Models.VratiStudente>
 
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -46,66 +41,56 @@
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
 <body class="padTop53 ">
+
     <!--PAGE CONTENT -->
     <div id="content">
         <div class="inner">
             <div class="row">
                 <div class="col-lg-12">
-
-                    <h2> Popis Studenta </h2>
-
-                </div>
-            </div>
-            <hr />
-
-            <div class="row">
-                <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Podaci iz baze
+                            <h3> Pregled prijava</h3>
                         </div>
-
                         <div class="panel-body">
+                            <div class="row">
+
+                                <div>
+
+                                </div>
+
+                                <div class="col-lg-5">
+
+                                </div>
+                            </div> <!--END ROW -->
+                            <br>
+
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Prezime i ime studenta</th>
-                                            <th>Naziv poduzeća</th>
-                                            <th>Trajanje</th>
-                                            <th>Odobrena</th>
-                                            <th>Ocjena</th>
-                                            <th>Aktivnost</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
 
-                                        @foreach (VratiStudente a in Model)
-                                        {
-                                          
-                                            <tr>
-                                                <td class="col-md-1">@a.id_student </td>
-                                                <td class="col-md-3">@a.ime  </td>
-                                                <td class="col-md-2">@a.poduzece</td>
-                                                <td class="col-md-2">Od: @a.datoum_od<br>Do: @a.datoum_do</td>
-                                                <td class="col-md-1">@a.odobreno</td>
-                                                <td class="col-md-1">@a.ocjena</td>
-                                                <td class="col-md-2">
-                                                    <a href="#" class="btn btn-primary btn-xs btn-grad">Uredi</a>
-                                                    <a href="#" class="btn btn-danger btn-xs btn-grad">Briši</a>
-                                                    <br/>
-                                                    <br/>
-                                                    <a href="#" class="btn btn-info btn-xs btn-grad">Ocjena</a>
-                                                   
-                                                    @Html.ActionLink("Dnevnik", "dnevnik", new { id = a.id_student}, new { @class = "btn btn-success btn-xs btn-grad" })
-                                                   
-                                                </td>
-                                            </tr>
-                                        }
 
-                                    </tbody>
-                                </table>
+                                @foreach (Poduzece d in Model)
+                                {
+
+                                    <h3>Naziv:</h3>
+                                    <p>@d.naziv</p>
+                                    <h3>Adresa:</h3>
+                                    <p>@d.adresa</p>
+                                    <h3>Grad:</h3>
+                                    <p>@d.grad</p>
+                                    <h3>Opis:</h3>
+                                    <p>@d.opis</p>
+                                    <h3>Kontakt Osova:</h3>
+                                    <p>@d.kontakt_osoba</p>
+                                    <h3>Telefon:</h3>
+                                    <p>@d.tel</p>
+                                    <h3>E-mail:</h3>
+                                    <p>@d.email</p>
+                                    <h3>URL:</h3>
+                                    <p>@d.URL</p>
+                                               <br/>
+                                    @Html.ActionLink("Uredi", "editPoduzeca", new { @id = @d.id_poduzece }, new { @class = "btn btn-primary btn-xs btn-grad" })
+
+                                }
+
                             </div>
                         </div>
                     </div>
@@ -115,12 +100,14 @@
 
 
     </div>
+ 
     <!--END PAGE CONTENT -->
     <!--END MAIN WRAPPER -->
     <!-- FOOTER -->
     <div id="footer">
         <p>&copy;  binarytheme &nbsp;2014 &nbsp;</p>
     </div>
+
     <!--END FOOTER -->
     <!-- GLOBAL SCRIPTS -->
     <script src="~/assets/plugins/jquery-2.0.3.min.js"></script>

@@ -57,7 +57,7 @@ namespace Strucna.Controllers
 
                 foreach (Poduzece poduzece in listaSPoduzeca)
                 {
-                    if (poduzece.id_poduzece == praksa.id_student)
+                    if (poduzece.id_poduzece == praksa.id_poduzece)
                     {
 
                         a.poduzece = poduzece.naziv;

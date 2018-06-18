@@ -78,6 +78,30 @@ namespace Strucna.Controllers
             return View(vrati);
         }
 
+        public ActionResult dnevnik(int id)
+        {
+            List<Dnevnik_prakse> lista = new List<Dnevnik_prakse>();
+            foreach (Dnevnik_prakse dok in baza.Dnevnik)
+            {
+                if (dok.id_student == id)
+                {
+                    lista.Add(dok);
+                }
+                
+
+            }
+            return View(lista);
+        }
+
+        public ActionResult dnevnikDetalji(int id)
+        {
+            Dnevnik_prakse a = baza.Dnevnik.SingleOrDefault(s => s.id_dnevnik == id);
+            List<Dnevnik_prakse> lista = new List<Dnevnik_prakse>();
+            lista.Add(a);
+
+            return View(lista);
+        }
+
         public ActionResult editPraksa(int id)
         {
             Session["editPID"] = id;
@@ -259,11 +283,55 @@ namespace Strucna.Controllers
             return View(lista);
         }
 
+        public ActionResult editPoduzeca( int id)
+        {
+            Poduzece poduzeceToUpdate = baza.Poduzeca.SingleOrDefault(s => s.id_poduzece == id);
+            Session["editPod"] = id;
+            return View(poduzeceToUpdate);
+        }
+
+        [HttpPost]
+        public ActionResult editPoduzeca(Poduzece p)
+        {
+            int broj = (int) Session["editPod"];
+            Poduzece poduzeceToUpdate = baza.Poduzeca.SingleOrDefault(s => s.id_poduzece == broj);
+            poduzeceToUpdate.naziv = p.naziv;
+            poduzeceToUpdate.adresa = p.adresa;
+            poduzeceToUpdate.URL = p.URL;
+            poduzeceToUpdate.email = p.email;
+            poduzeceToUpdate.grad = p.grad;
+            poduzeceToUpdate.kontakt_osoba = p.kontakt_osoba;
+            poduzeceToUpdate.opis = p.opis;
+            poduzeceToUpdate.tel = p.tel;
+
+            baza.SaveChanges();
+            Session["editPod"] = null;
+            return RedirectToAction("poduzeca");
+        }
+
         public ActionResult dodajSmjer()
         {
 
             return View();
 
+        }
+        public ActionResult detailsPoduzeca(int id)
+        {
+            Poduzece poduzeceToUpdate = baza.Poduzeca.SingleOrDefault(s => s.id_poduzece == id);
+            List<Poduzece> lista = new List<Poduzece>();
+            lista.Add(poduzeceToUpdate);
+            return View(lista);
+        }
+
+        public ActionResult deletePoduzeca(int id)
+        {
+            Poduzece poduzeceToDelete = baza.Poduzeca.SingleOrDefault(s => s.id_poduzece == id);
+
+            baza.Poduzeca.Remove(poduzeceToDelete);
+            baza.SaveChanges();
+
+
+            return RedirectToAction("poduzeca");
         }
         [HttpPost]
         public ActionResult dodajSmjer(Studij studij)
