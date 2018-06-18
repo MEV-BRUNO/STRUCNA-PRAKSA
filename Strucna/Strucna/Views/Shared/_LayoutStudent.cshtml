@@ -57,21 +57,13 @@
                 <ul class="nav navbar-top-links navbar-right">
                     <!--ADMIN SETTINGS SECTIONS -->
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="icon-user "></i>&nbsp; <i class="icon-chevron-down "></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li>
-                                <a href="#"><i class="icon-user"></i> Korisničk profil </a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="icon-gear"></i> Osobne postavke </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="logout"><i class="icon-signout"></i> Odjava </a>
-                            </li>
-                        </ul>
+                        
+                        
+                          
+                        <li>
+                            @Html.ActionLink("Odjava", "logout", new { @class = "icon-signout" })
+                        </li>
+                         
                     </li>
                     <!--END ADMIN SETTINGS -->
                 </ul>
@@ -108,7 +100,8 @@
                     </a>
                     <ul class="collapse" id="component-rod">
                         <li class=""><a href='@Url.Action("osobni_podaci","Student")'><i class="icon-angle-right"></i> Osobni podaci  </a></li>
-                        <li class=""><a href='@Url.Action("prijava_studenta","Student")'><i class="icon-angle-right"></i> Prijava prakse </a></li>
+                        <li class=""><a href='@Url.Action("prijava_studenta","Student")'><i class="icon-angle-right"></i> Prijava poduzeća </a></li>
+                        <li class=""><a href='@Url.Action("prijava_prakse","Student")'><i class="icon-angle-right"></i> Prijava prakse </a></li>
                         <li class=""><a href='@Url.Action("dnevnik_prakse","Student")'><i class="icon-angle-right"></i> Dnevnik prakse </a></li>
                         <li class=""><a href='@Url.Action("dokumenti","Student")'><i class="icon-angle-right"></i> Dokumenti </a> </li>
                     </ul>

@@ -3,7 +3,7 @@
     ViewBag.Title = "index_student";
     Layout = "~/Views/Shared/_LayoutStudent.cshtml";
 }
-@using Strucna.Models
+@using Strucna.Models 
 @model IEnumerable<Strucna.Models.VratiStudente>
 <!DOCTYPE html>
 <html>
@@ -47,7 +47,13 @@
 
                                         @foreach (VratiStudente a in Model)
                                         {
-                                            if (a.id_student ==(int)Session["UserID"]) { 
+                                            int broj = a.id_student;
+            
+
+                                            if ( broj == (int)Session["UserID"])
+                                            {
+
+
                                                 <tr>
                                                     <td class="col-md-1">@a.id_student </td>
                                                     <td class="col-md-3">@a.ime  </td>
@@ -58,7 +64,10 @@
                                                   
                                                 </tr>
                                             }
+
+
                                         }
+                                  
 
                                     </tbody>
                                 </table>

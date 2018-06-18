@@ -183,6 +183,7 @@
     </Compile>
     <Compile Include="Models\Dnevnik_prakse.cs" />
     <Compile Include="Models\Dokumenti.cs" />
+    <Compile Include="Models\MyListTable.cs" />
     <Compile Include="Models\ForeginKeyAttribute.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Mentor.cs" />
@@ -193,8 +194,10 @@
     <Compile Include="Models\Prijava.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Studij.cs" />
+    <Compile Include="Models\VratiPrakse.cs" />
     <Compile Include="Models\VratiStudente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\PraksaViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\bootstrap-fileupload.min.css" />
@@ -2256,6 +2259,10 @@
     <Content Include="Views\Admin\editSmjer.cshtml" />
     <Content Include="Views\Student\NoviDnevnik.cshtml" />
     <Content Include="Views\Student\EditDnevnik.cshtml" />
+    <Content Include="Views\Admin\addPraksa.cshtml" />
+    <Content Include="Views\Admin\editPraksa.cshtml" />
+    <Content Include="Views\Admin\deletePraksa.cshtml" />
+    <Content Include="Views\Student\prijava_prakse.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

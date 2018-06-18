@@ -67,23 +67,7 @@
                                                     @Html.AntiForgeryToken()
                                                     <div class="form-group">
 
-                                                        @Session["Username"]
-                                                        @for (int i = 0; i < 3; i++)
-                                                        {
-                                                            string ispis;
-                                                            string[] smjer = { "Računarstvo", "Menadžment", "Održivi Razvoj" };
-                                                            if ((int)Session["Smjer"] == i)
-                                                            {
-
-                                                                ispis = smjer[i];
-                                                                @Html.Raw(ispis)
-                                                            }
-
-
-
-                                                        }
-
-                                                    
+                                                         
                                                         <form method="post" action="">
                                                             <p>
 

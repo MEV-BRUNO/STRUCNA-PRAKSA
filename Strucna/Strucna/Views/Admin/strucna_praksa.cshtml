@@ -3,7 +3,8 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 
 }
-
+@using Strucna.Models
+@model IEnumerable<Strucna.Models.VratiPrakse>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
@@ -51,33 +52,14 @@
                                 <h3> Pregled prijava</h3>
                             </div>
                             <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-lg-2">
-                                        <div class="form-group">
-                                            <label>Akademska godina:</label>
-                                            <select class="form-control">
-                                                <option>2017./2018.</option>
-                                                <option>2016./2017.</option>
-                                                <option>2015./2016.</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-5">
-                                        <div class="form-group">
-                                            <label>Naziv prakse:</label>
-                                            <select class="form-control">
-                                                <option>Praksa studenata računarstva </option>
-                                                <option>Praksa studenata menadžmenta</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-5">
-                                    </div>
-                                </div> <!--END ROW -->
+                      
                                 <br>
                                 <p>
-                                    <a href="#" class="btn btn-primary btn-xs btn-grad">Dodaj praksu </a>
-                                </p>
+                                    <button class = "btn btn-primary btn-xs btn-grad">
+                                        @Html.ActionLink("Dodaj Praksu", "addPraksa" , new { @class = "btn btn-primary btn-xs btn-grad" } ,new { @style = "color:White;" })
+                                    </button>
+                                
+                                    </p>
                                 
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -86,7 +68,7 @@
                                                 <th>#</th>
                                                 <th>Naziv stručne prakse </th>
                                                 <th>Naziv studija</th>
-                                                <th>Ak.godina</th>
+                                               
                                                 <th>Mentor</th>
                                                 <th>Trajanje</th>
                                                 <th>Završena</th>
@@ -94,32 +76,27 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        @foreach(var p in Model)
+                                        {
+                                           
                                             <tr>
-                                                <td class="col-md-1">1.</td>
-                                                <td class="col-md-2">Praksa studenti menadžemnta</td>
-                                                <td class="col-md-2">Računarstvo</td>
-                                                <td class="col-md-1">2017./2018.</td>
-                                                <td class="col-md-2">Bruno Trstenjak</td>
-                                                <td class="col-md-1">Od:12.04.2017.<br>Do:01.03.2017</td>
-                                                <td class="col-md-1">Ne</td>
+                                                <td class="col-md-1">@p.id_praksa</td>
+                                                <td class="col-md-2">@p.naziv</td>
+                                                <td class="col-md-2">@p.studij</td>
+                                               
+                                                <td class="col-md-2">@p.mentor</td>
+                                                <td class="col-md-1">Od:@p.datoum_od<br>Do:@p.datoum_do</td>
+                                                <td class="col-md-1">@p.zavrsena</td>
                                                 <td class="col-md-2">
-                                                    <a href="#" class="btn btn-primary btn-xs btn-grad">Uredi</a>
-                                                    <a href="#" class="btn btn-danger btn-xs btn-grad">Briši</a>
+                                                    @Html.ActionLink("Uredi", "editPraksa", new { @id = @p.id_praksa }, new { @class = "btn btn-primary btn-xs btn-grad" }) 
+                                                    @Html.ActionLink("Obriši", "deletePraksa", new { @id = @p.id_praksa }, new { @class = "btn btn-danger btn-xs btn-grad" }) 
+
+
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td class="col-md-1">2.</td>
-                                                <td class="col-md-3">Praksa studenti menadžemnta</td>
-                                                <td class="col-md-2">Menadžment</td>
-                                                <td class="col-md-1">2017./2018.</td>
-                                                <td class="col-md-2">Bruno Trstenjak</td>
-                                                <td class="col-md-1">Od:12.04.2017.<br>Do:01.03.2017</td>
-                                                <td class="col-md-1">Ne</td>
-                                                <td class="col-md-1">
-                                                    <a href="#" class="btn btn-primary btn-xs btn-grad">Uredi</a>
-                                                    <a href="#" class="btn btn-danger btn-xs btn-grad">Briši</a>
-                                                </td>
-                                            </tr>
+                                         
+                                        }
+                                         
                                         </tbody>
                                     </table>
                                 </div>

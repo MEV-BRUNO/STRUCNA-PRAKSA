@@ -13,7 +13,9 @@ namespace Strucna.Models
         [Required]
         [Key]
         public int id_praksa { get; set; }
+        [Display(Name = "Ime Mentora")]
         public int id_studij { get; set; }
+        [Display(Name = "Ime Mentora")]
         public int id_mentor { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
         [Display(Name = "Naziv")]
