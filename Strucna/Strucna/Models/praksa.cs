@@ -13,7 +13,7 @@ namespace Strucna.Models
         [Required]
         [Key]
         public int id_praksa { get; set; }
-        [Display(Name = "Ime Mentora")]
+        [Display(Name = "Naziv Studija")]
         public int id_studij { get; set; }
         [Display(Name = "Ime Mentora")]
         public int id_mentor { get; set; }
