@@ -108,6 +108,8 @@ namespace Strucna.Controllers
             Session["editPID"] = id;
   
             Praksa praksaToUpdate = baza.Prakse.SingleOrDefault(s => s.id_praksa == id);
+            praksaToUpdate.datum_od = praksaToUpdate.datum_od.Date;
+            praksaToUpdate.datum_do = praksaToUpdate.datum_do.Date;
             return View(praksaToUpdate);
  
 

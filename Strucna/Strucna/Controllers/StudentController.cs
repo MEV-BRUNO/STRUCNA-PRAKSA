@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -128,6 +129,15 @@ namespace Strucna.Controllers
         [HttpPost]
         public ActionResult prijava_prakse(Praksa_student p)
         {
+
+            foreach (Praksa_student praksa in baza.PraksaStudent)
+            {
+                if (praksa.id_student == p.id_student)
+                {
+                    ViewBag.samojedna = "Mozete imati prijavljenu samo jednu prasku.";
+                    return View();
+                }
+            }
             int broj = (int) Session["UserID"];
             Praksa datum = baza.Prakse.SingleOrDefault(s => s.id_praksa == p.id_praksa);
 
@@ -193,15 +203,34 @@ namespace Strucna.Controllers
         {
 
             int broj = (int)Session["UserID"];
-            Student studentToUpdate = baza.Studenti.SingleOrDefault(b => b.id_studnet == broj);
-            studentToUpdate.ime_prezime = s.ime_prezime;
-            studentToUpdate.adresa = s.adresa;
-            studentToUpdate.mob = s.mob;
+
+            foreach (Student student in baza.Studenti)
+            {
+                if (student.id_studnet == broj)
+                {
+                    student.ime_prezime = s.ime_prezime;
+                    student.adresa = s.adresa;
+                    student.mob = s.mob;
+                    if (s.lozinka != s.ConfirmLozinka)
+                    {
+                        ViewBag.lozinka = "Lozinke nisu iste.";
+                        return View();
+                    }
+                    student.lozinka = s.lozinka;
+                     
+                  
+                     
+                }
+            }
+            if (ModelState.IsValid)
+            {
+                baza.SaveChanges();
+                return RedirectToAction("osobni_podaci");
+            }
 
 
-            baza.SaveChanges();
+            return View();
 
-            return RedirectToAction("osobni_podaci");
         }
 
 

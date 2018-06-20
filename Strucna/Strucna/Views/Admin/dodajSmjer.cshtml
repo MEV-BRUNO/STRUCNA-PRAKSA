@@ -12,13 +12,10 @@
 <div id="content">
     <div class="inner">
         <div class="row">
-            <div class="col-lg-12">
-
  
-            </div>
         </div>
         <hr />
-            
+        <div class="col-lg-6">    
         <div class="table-responsive">
 
             @using (Html.BeginForm())
@@ -26,12 +23,18 @@
                 @Html.LabelFor(model => model.naziv, new { @class = "control-label" })
                 @Html.EditorFor(model => model.naziv, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.naziv, "", new { @class = "text-danger" })
-                <br/>
+                <br />
                 <button class="btn btn-primary">Dodaj</button>
+
             }
+            
+            <br/>
+
+            @Html.ActionLink("Odustani", "popis_studijskih_programa", new { @class = "btn btn-primary" })
+            
 
         </div>
     </div>
 </div>
- 
+</div>
 </body>

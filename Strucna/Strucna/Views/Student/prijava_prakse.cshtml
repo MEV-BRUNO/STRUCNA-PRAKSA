@@ -98,7 +98,8 @@
                                                 @using (Html.BeginForm())
                                                 {
 
-                                                   
+                                                    @ViewBag.samojedna
+
                                                     <p>
                                                         @Html.LabelFor(model => model.id_praksa, new { @class = "control-label" })
                                                         @Html.DropDownListFor(model => model.id_praksa, listPraksa, new { @class = "form-control" })

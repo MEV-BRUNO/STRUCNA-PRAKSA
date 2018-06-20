@@ -33,15 +33,15 @@
                             <p>
 
                                 @Html.LabelFor(model => model.ocjena, new { @class = "control-label" })
-                                <br/>
+                                <br />
                                 @Html.RadioButtonFor(model => model.ocjena, "0") Neocjenjeno
-                                <br/>
+                                <br />
                                 @Html.RadioButtonFor(model => model.ocjena, "1") Pozitivno
-                                <br/>
+                                <br />
                                 @Html.RadioButtonFor(model => model.ocjena, "2") Negativno
 
                             </p>
-                        
+
 
                             <button class="btn btn-danger">Uredi</button>
 
@@ -49,7 +49,7 @@
                     </div>
 
                 }
-
+                @Html.ActionLink("Odustani", "o_praksi", new { @class = "btn btn-link" })
             </div>
         </div>
     </div>

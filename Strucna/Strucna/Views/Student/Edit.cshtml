@@ -67,22 +67,11 @@
                                                 @Html.AntiForgeryToken()
                                                 <div class="form-group">
 
-                                                    @Session["Username"]
-                                                    @for (int i = 0; i < 3; i++)
-                                                    {
-                                                    string ispis;
-                                                    string[] smjer = { "Računarstvo", "Menadžment", "Održivi Razvoj" };
-                                                    if ((int)Session["Smjer"] == i)
-                                                    {
-
-                                                    ispis = smjer[i];
-                                                    @Html.Raw(ispis)
-                                                    }
+                                                   
 
 
 
-                                                    }
-
+                                                    
 
                                                     <form method="post" action="">
                                                         <p>
@@ -109,11 +98,30 @@
                                                             @Html.ValidationMessageFor(model => model.mob, "", new { @class = "text-danger" })
 
                                                         </p>
+                                                        
+                                                        <p>
+
+                                                            @Html.LabelFor(model => model.lozinka, new { @class = "control-label" })
+                                                            @ViewBag.lozinka
+                                                            @Html.PasswordFor(model => model.lozinka,new { @class = "form-control" })
+                                                            @Html.ValidationMessageFor(model => model.lozinka, "", new { @class = "text-danger" })
+
+                                                        </p>
+                                                        
+                                                        
+                                                        <p>
+
+                                                            @Html.LabelFor(model => model.ConfirmLozinka, new { @class = "control-label" })
+
+                                                            @Html.PasswordFor(model => model.ConfirmLozinka, new { @class = "form-control" })
+                                                            @Html.ValidationMessageFor(model => model.ConfirmLozinka, "", new { @class = "text-danger" })
+
+                                                        </p>
 
 
 
 
-                                                        <button class="btn btn-danger">Prijava</button>
+                                                        <button class="btn btn-danger">Izmjeni</button>
 
                                                     </form>
                                                 </div>

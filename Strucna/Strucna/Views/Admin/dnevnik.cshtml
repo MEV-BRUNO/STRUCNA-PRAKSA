@@ -80,28 +80,29 @@
                                         @foreach (Dnevnik_prakse d in Model)
                                         {
 
-                                            
-                                            
 
 
 
 
-                                        <tr>
 
-                                            <td class="col-md-1">@d.red_broj</td>
-                                            <td class="col-md-4">@d.naslov</td>
-                                            <td class="col-md-4">@d.datum</td>
-                                            <td>
-                                                @Html.ActionLink("Detalji", "dnevnikDetalji", new { id = d.id_dnevnik }, new { @class = "btn btn-success btn-s btn-grad" })
-                                                                                    </td>
-                                        </tr>
-                                            
+
+                                            <tr>
+
+                                                <td class="col-md-1">@d.red_broj</td>
+                                                <td class="col-md-4">@d.naslov</td>
+                                                <td class="col-md-4">@d.datum</td>
+                                                <td>
+                                                    @Html.ActionLink("Detalji", "dnevnikDetalji", new { id = d.id_dnevnik }, new { @class = "btn btn-success btn-s btn-grad" })
+                                                </td>
+                                            </tr>
+
 
 
 
                                         }
                                     </tbody>
                                 </table>
+                                @Html.ActionLink("Vrati se ", "o_praksi", new { @class = "btn btn-link" })
                             </div>
                         </div>
                     </div>

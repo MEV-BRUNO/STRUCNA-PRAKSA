@@ -79,12 +79,12 @@
                         </p>
                         <p>
                             @Html.LabelFor(model => model.datum_od, new { @class = "control-label" })
-                            @Html.EditorFor(model => model.datum_od, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.datum_od , new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.datum_od, "", new { @class = "text-danger" })
                         </p>
                         <p>
                             @Html.LabelFor(model => model.datum_do, new { @class = "control-label" })
-                            @Html.EditorFor(model => model.datum_do, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.datum_do,new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.datum_do, "", new { @class = "text-danger" })
                         </p>
 
@@ -92,12 +92,14 @@
                             @Html.LabelFor(model => model.zavrsena)
                             <br />
                             @Html.RadioButtonFor(model => model.zavrsena, 0) Ne
-                            <br />
+                   
                             @Html.RadioButtonFor(model => model.zavrsena, 1) Da
                         </p>
 
-                        <button class="btn btn-primary">Dodaj</button>
+                        <button class="btn btn-primary">Uredi</button>
                     }
+                    <br/>
+                    @Html.ActionLink("Odustani","strucna_praksa",new {@class="btn btn-link"})
                 </div>
             </div>
         </div>

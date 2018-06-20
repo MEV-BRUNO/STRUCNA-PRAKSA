@@ -86,11 +86,12 @@
                                     <p>@d.email</p>
                                     <h3>URL:</h3>
                                     <p>@d.URL</p>
-                                               <br/>
+                                    <br />
                                     @Html.ActionLink("Uredi", "editPoduzeca", new { @id = @d.id_poduzece }, new { @class = "btn btn-primary btn-xs btn-grad" })
 
                                 }
-
+                                <br/>
+                                @Html.ActionLink("Vrati se ", "poduzeca", new { @class = "btn btn-link" })
                             </div>
                         </div>
                     </div>

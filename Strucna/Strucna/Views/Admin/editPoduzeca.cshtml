@@ -28,80 +28,81 @@
                                                 @using (Html.BeginForm())
                                                 {
                                                     @Html.AntiForgeryToken()
-                                                    <div class="form-group">
+                                                <div class="form-group">
 
 
-                                                        <form method="post" action="">
-                                                            <p>
+                                                    <form method="post" action="">
+                                                        <p>
 
-                                                                @Html.LabelFor(model => model.naziv, new { @class = "control-label" })
+                                                            @Html.LabelFor(model => model.naziv, new { @class = "control-label" })
 
-                                                                @Html.EditorFor(model => model.naziv, new { htmlAttributes = new { @class = "form-control" } })
-                                                                @Html.ValidationMessageFor(model => model.naziv, "", new { @class = "text-danger" })
+                                                            @Html.EditorFor(model => model.naziv, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.naziv, "", new { @class = "text-danger" })
 
-                                                            </p>
-                                                            <p>
+                                                        </p>
+                                                        <p>
 
-                                                                @Html.LabelFor(model => model.adresa, new { @class = "control-label" })
-                                                                <br />
-                                                                @Html.TextAreaFor(model => model.adresa, new { htmlAttributes = new { @class = "form-control" } })
-                                                                @Html.ValidationMessageFor(model => model.adresa, "", new { @class = "text-danger" })
+                                                            @Html.LabelFor(model => model.adresa, new { @class = "control-label" })
+                                                            <br />
+                                                            @Html.TextAreaFor(model => model.adresa, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.adresa, "", new { @class = "text-danger" })
 
-                                                            </p>
-                                                            <p>
+                                                        </p>
+                                                        <p>
 
-                                                                @Html.LabelFor(model => model.grad, new { @class = "control-label" })
+                                                            @Html.LabelFor(model => model.grad, new { @class = "control-label" })
 
-                                                                @Html.EditorFor(model => model.grad, new { htmlAttributes = new { @class = "form-control" } })
-                                                                @Html.ValidationMessageFor(model => model.grad, "", new { @class = "text-danger" })
+                                                            @Html.EditorFor(model => model.grad, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.grad, "", new { @class = "text-danger" })
 
-                                                            </p>
-                                                            <p>
+                                                        </p>
+                                                        <p>
 
-                                                                @Html.LabelFor(model => model.kontakt_osoba, new { @class = "control-label" })
+                                                            @Html.LabelFor(model => model.kontakt_osoba, new { @class = "control-label" })
 
-                                                                @Html.EditorFor(model => model.kontakt_osoba, new { htmlAttributes = new { @class = "form-control" } })
-                                                                @Html.ValidationMessageFor(model => model.kontakt_osoba, "", new { @class = "text-danger" })
+                                                            @Html.EditorFor(model => model.kontakt_osoba, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.kontakt_osoba, "", new { @class = "text-danger" })
 
-                                                            </p>
-                                                            <p>
+                                                        </p>
+                                                        <p>
 
-                                                                @Html.LabelFor(model => model.tel, new { @class = "control-label" })
+                                                            @Html.LabelFor(model => model.tel, new { @class = "control-label" })
 
-                                                                @Html.EditorFor(model => model.tel, new { htmlAttributes = new { @class = "form-control" } })
-                                                                @Html.ValidationMessageFor(model => model.tel, "", new { @class = "text-danger" })
+                                                            @Html.EditorFor(model => model.tel, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.tel, "", new { @class = "text-danger" })
 
-                                                            </p>
-                                                            <p>
+                                                        </p>
+                                                        <p>
 
-                                                                @Html.LabelFor(model => model.email, new { @class = "control-label" })
+                                                            @Html.LabelFor(model => model.email, new { @class = "control-label" })
 
-                                                                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
-                                                                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                                                            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
 
-                                                            </p>
-                                                            <p>
+                                                        </p>
+                                                        <p>
 
-                                                                @Html.LabelFor(model => model.opis, new { @class = "control-label" })
-                                                                <br />
-                                                                @Html.TextAreaFor(model => model.opis, new { htmlAttributes = new { @class = "form-control" } })
-                                                                @Html.ValidationMessageFor(model => model.opis, "", new { @class = "text-danger" })
+                                                            @Html.LabelFor(model => model.opis, new { @class = "control-label" })
+                                                            <br />
+                                                            @Html.TextAreaFor(model => model.opis, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.opis, "", new { @class = "text-danger" })
 
-                                                            </p>
+                                                        </p>
 
-                                                            <p>
+                                                        <p>
 
-                                                                @Html.LabelFor(model => model.URL, new { @class = "control-label" })
-                                                                <br />
-                                                                @Html.TextAreaFor(model => model.URL, new { htmlAttributes = new { @class = "form-control" } })
-                                                                @Html.ValidationMessageFor(model => model.URL, "", new { @class = "text-danger" })
+                                                            @Html.LabelFor(model => model.URL, new { @class = "control-label" })
+                                                            <br />
+                                                            @Html.TextAreaFor(model => model.URL, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.URL, "", new { @class = "text-danger" })
 
-                                                            </p>
+                                                        </p>
 
-                                                            <button class="btn btn-danger">Uredi</button>
+                                                        <button class="btn btn-danger">Uredi</button>
 
-                                                        </form>
-                                                    </div>
+                                                    </form>
+                                                    @Html.ActionLink("Odustani", "poduzeca", new { @class = "btn btn-primary" })
+                                                </div>
 
                                                 }
                                             </div>

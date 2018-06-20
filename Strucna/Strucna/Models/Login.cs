@@ -9,6 +9,7 @@ namespace Strucna.Models
     public class Login
     {
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
+        [DataType(DataType.EmailAddress)]
         [Display(Name = "Email adresa")]
         public string email { get; set; }
          

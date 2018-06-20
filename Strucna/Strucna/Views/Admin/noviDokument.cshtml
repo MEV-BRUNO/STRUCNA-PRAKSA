@@ -20,16 +20,18 @@
             
             <div class="table-responsive">
 
-                    @using (Html.BeginForm("noviDokument", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                    {
+                @using (Html.BeginForm("noviDokument", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
 
-                        <span>Odaberite datoteku:</span>
+                    <span>Odaberite datoteku:</span>
 
-                        <input type="file" name="postedFile" />
-                        <br />
-                        <button class="btn btn-danger">Dodaj</button>
-                    }
-                </div>
+                    <input type="file" name="postedFile" />
+                    <br />
+                    <button class="btn btn-danger">Dodaj</button>
+                }
+                <br/>
+                @Html.ActionLink("Odustani", "dokumenti", new { @class = "btn btn-link" })
+            </div>
             </div>
         </div>
  

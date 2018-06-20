@@ -33,53 +33,55 @@
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
             <thead>
-            <tr>
-                <th>#</th>
-                <th>Prezime i ime studenta</th>
-                <th>Adresa</th>
-                <th>Aktivan</th>
-                <th>Studij</th>
-                <th>Redovni</th>
-           
-            </tr>
+                <tr>
+                    <th>#</th>
+                    <th>Prezime i ime studenta</th>
+                    <th>Adresa</th>
+                    <th>Aktivan</th>
+                    <th>Studij</th>
+                    <th>Redovni</th>
+
+                </tr>
             </thead>
             <tbody>
 
-               
-                
 
-            <tr>
-                <td class="col-md-1">@(Model.id_studnet)</td>
-                <td class="col-md-3">@(Model.ime_prezime)  </td>
-                <td class="col-md-2">@(Model.adresa)</td>
-                <td class="col-md-2">@if(Model.aktivan == 1)
-                                     {
-                                         @Html.Raw("DA");
-                                     }
-                                     else
-                                     {
 
-                                         @Html.Raw("NE");
-                                     }
+
+                <tr>
+                    <td class="col-md-1">@(Model.id_studnet)</td>
+                    <td class="col-md-3">@(Model.ime_prezime)  </td>
+                    <td class="col-md-2">@(Model.adresa)</td>
+                    <td class="col-md-2">
+                        @if (Model.aktivan == 1)
+                        {
+                            @Html.Raw("DA");
+                        }
+                        else
+                        {
+
+                            @Html.Raw("NE");
+                        }
                 </td>
                 <td class="col-md-1">@studiToUse.naziv</td>
-                <td class="col-md-2">@if(Model.izvanredni == 0)
-                                     {
-                                         @Html.Raw("DA");
-                                     }
-                                     else
-                                     {
+                <td class="col-md-2">
+                    @if (Model.izvanredni == 0)
+                    {
+                        @Html.Raw("DA");
+                    }
+                    else
+                    {
 
-                                         @Html.Raw("NE");
-                                     }
-                </td>
-                     
-            </tr>
-                
+                        @Html.Raw("NE");
+                    }
+            </td>
 
-            </tbody>
-        </table>
-      
+        </tr>
+
+
+    </tbody>
+    </table>
+    @Html.ActionLink("Vrati se ", "o_praksi", new { @class = "btn btn-link" })
     </div>
         </div>
     </div>

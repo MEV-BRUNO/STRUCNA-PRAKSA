@@ -55,9 +55,9 @@
                       
                                 <br>
                                 <p>
-                                    <button class = "btn btn-primary btn-xs btn-grad">
-                                        @Html.ActionLink("Dodaj Praksu", "addPraksa" , new { @class = "btn btn-primary btn-xs btn-grad" } ,new { @style = "color:White;" })
-                                    </button>
+
+                                        @Html.ActionLink("Dodaj Praksu", "addPraksa" , new { @class = "btn btn-link" })
+
                                 
                                     </p>
                                 
@@ -85,7 +85,7 @@
                                                 <td class="col-md-2">@p.studij</td>
                                                
                                                 <td class="col-md-2">@p.mentor</td>
-                                                <td class="col-md-1">Od:@p.datoum_od<br>Do:@p.datoum_do</td>
+                                                <td class="col-md-1">Od:@p.datoum_od.Substring(0,10)<br>Do:@p.datoum_do.Substring(0, 10)</td>
                                                 <td class="col-md-1">@p.zavrsena</td>
                                                 <td class="col-md-2">
                                                     @Html.ActionLink("Uredi", "editPraksa", new { @id = @p.id_praksa }, new { @class = "btn btn-primary btn-xs btn-grad" }) 
