@@ -129,16 +129,17 @@ namespace Strucna.Controllers
         [HttpPost]
         public ActionResult prijava_prakse(Praksa_student p)
         {
+            int broj = (int)Session["UserID"];
 
             foreach (Praksa_student praksa in baza.PraksaStudent)
             {
-                if (praksa.id_student == p.id_student)
+                if (praksa.id_student == broj)
                 {
                     ViewBag.samojedna = "Mozete imati prijavljenu samo jednu prasku.";
                     return View();
                 }
             }
-            int broj = (int) Session["UserID"];
+             
             Praksa datum = baza.Prakse.SingleOrDefault(s => s.id_praksa == p.id_praksa);
 
 

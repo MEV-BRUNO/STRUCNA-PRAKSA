@@ -57,13 +57,13 @@
                 <ul class="nav navbar-top-links navbar-right">
                     <!--ADMIN SETTINGS SECTIONS -->
                     <li class="dropdown">
-                        
-                        
-                          
-                        <li>
-                            @Html.ActionLink("Odjava", "logout", new { @class = "icon-signout" })
-                        </li>
-                         
+
+
+
+                    <li>
+                        @Html.ActionLink("Odjava", "logout", new { @class = "icon-signout" })
+                    </li>
+
                     </li>
                     <!--END ADMIN SETTINGS -->
                 </ul>
@@ -72,11 +72,11 @@
         <!-- END HEADER SECTION -->
         <!-- MENU SECTION -->
         <div id="left">
-             
+
             <ul id="menu" class="collapse">
 
                 <li class="panel">
-                    <a style="color:darkviolet;" href='@Url.Action("index_student","Student")'>
+                    <a   href='@Url.Action("index_student","Student")'>
                         <i class="icon-table"></i> Početna stranica
                     </a>
                 </li>
@@ -85,11 +85,9 @@
                     <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-rod">
                         <i class="icon-tasks"> </i> Studenti
 
-                        <span class="pull-right">
-                            <i class="icon-angle-left"></i>
-                        </span>
+ 
                     </a>
-                    <ul class="collapse" id="component-rod">
+                    <ul class=" " id="component-rod">
                         <li class=""><a href='@Url.Action("osobni_podaci","Student")'><i class="icon-angle-right"></i> Osobni podaci  </a></li>
                         <li class=""><a href='@Url.Action("prijava_studenta","Student")'><i class="icon-angle-right"></i> Prijava poduzeća </a></li>
                         <li class=""><a href='@Url.Action("prijava_prakse","Student")'><i class="icon-angle-right"></i> Prijava prakse </a></li>
@@ -104,9 +102,17 @@
         <!--END MENU SECTION -->
         @RenderBody()
     </div>
-    
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script src="../../assets/plugins/jquery-2.0.3.min.js"></script>
+    <script src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <!-- END GLOBAL SCRIPTS -->
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="../../assets/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="../../assets/plugins/dataTables/dataTables.bootstrap.js"></script>
 </body>
 </html>

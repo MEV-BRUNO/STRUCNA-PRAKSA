@@ -1,41 +1,14 @@
 ﻿
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!-->
+
 <html lang="en">
-<!--<![endif]-->
-<!-- BEGIN HEAD -->
+
 <head>
-    <meta charset="UTF-8" />
-    <title>MENTOR</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="" name="description" />
-    <meta content="" name="author" />
-    <!--[if IE]>
-       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-       <![endif]-->
-    <!-- GLOBAL STYLES -->
-    <!-- GLOBAL STYLES -->
-    <link rel="stylesheet" href="~/assets/plugins/bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/assets/css/main.css" />
-    <link rel="stylesheet" href="~/assets/css/theme.css" />
-    <link rel="stylesheet" href="~/assets/css/MoneAdmin.css" />
-    <link rel="stylesheet" href="~/assets/plugins/Font-Awesome/css/font-awesome.css" />
-    <!--END GLOBAL STYLES -->
-    <!-- PAGE LEVEL STYLES -->
-    <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
-    <!-- END PAGE LEVEL  STYLES -->
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
-<body class="padTop53 ">
-    <!-- MAIN WRAPPER -->
+<body>
     <div id="wrap">
 
         <!-- HEADER SECTION -->
@@ -54,13 +27,13 @@
                 <ul class="nav navbar-top-links navbar-right">
                     <!--ADMIN SETTINGS SECTIONS -->
                     <li class="dropdown">
-                        
-                        
-                          
-                            <li>
-                                @Html.ActionLink("Odjava", "logout", new { @class = "icon-signout" })
-                            </li>
-                         
+
+
+
+                    <li>
+                        @Html.ActionLink("Odjava", "logout", new { @class = "icon-signout" })
+                    </li>
+
                     </li>
                     <!--END ADMIN SETTINGS -->
                 </ul>
@@ -69,11 +42,11 @@
         <!-- END HEADER SECTION -->
         <!-- MENU SECTION -->
         <div id="left">
-             
+
             <ul id="menu" class="collapse">
 
                 <li class="panel">
-                    <a style="color:darkviolet;" href='@Url.Action("index_admin","Admin")'>
+                    <a  " href='@Url.Action("index_admin","Admin")'>
                         <i class="icon-table"></i> Početna stranica
                     </a>
                 </li>
@@ -81,14 +54,19 @@
                     <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
                         <i class="icon-tasks"> </i> Mentori
 
-                        <span class="pull-right">
-                            <i class="icon-angle-left"></i>
-                        </span>
+                       
                     </a>
-                    <ul class="collapse" id="component-nav">
+                   
 
-                        @Html.Partial("partial_mentor")
-                    </ul>
+                        <li class=""><a href='@Url.Action("o_praksi","Admin")'><i class="icon-angle-right"></i> Popis studenata </a></li>
+ 
+                        <li class=""><a href='@Url.Action("popis_studijskih_programa","Admin")'><i class="icon-angle-right"></i> Popis studijskih programa </a></li>
+                        <li class=""><a href='@Url.Action("poduzeca","Admin")'><i class="icon-angle-right"></i> Poduzeca </a></li>
+ 
+                        <li class=""><a href='@Url.Action("strucna_praksa","Admin")'><i class="icon-angle-right"></i> Stručna praksa </a></li>
+                        <li class=""><a href='@Url.Action("dokumenti","Admin")'><i class="icon-angle-right"></i> Dokumenti </a></li>
+
+                     
                 </li>
 
 
@@ -96,15 +74,28 @@
 
 
             </ul>
-           
+
         </div>
-        
+
         <!--END MENU SECTION -->
-        @RenderBody()
+        <div class="contetn">
+            @RenderBody()
+        </div>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+
+  <script src="../../assets/plugins/jquery-2.0.3.min.js"></script>
+     <script src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <!-- END GLOBAL SCRIPTS -->
+        <!-- PAGE LEVEL SCRIPTS -->
+    <script src="../../assets/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="../../assets/plugins/dataTables/dataTables.bootstrap.js"></script>
+ 
+     <!-- END PAGE LEVEL SCRIPTS -->
 </body>
+     <!-- END BODY -->
 </html>

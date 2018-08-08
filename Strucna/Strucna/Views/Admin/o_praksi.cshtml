@@ -3,7 +3,7 @@
 
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 
-
+    int brojac = 1;
 
 }
  
@@ -81,30 +81,49 @@
                                     </thead>
                                     <tbody>
 
-                                        @foreach (VratiStudente a in Model)
-                                        {
-                                          
+                                    @{
+                                    foreach (VratiStudente a in Model)
+                                    {
+
                                             <tr>
-                                                <td class="col-md-1">@a.id_student </td>
+                                                <td class="col-md-1">@brojac</td>
                                                 <td class="col-md-3">@a.ime  </td>
                                                 <td class="col-md-2">@a.poduzece</td>
                                                 <td class="col-md-2">Od: @a.datoum_od.Substring(0, 10)<br>Do: @a.datoum_do.Substring(0, 10)</td>
                                                 <td class="col-md-1">@a.odobreno</td>
                                                 <td class="col-md-1">@a.ocjena</td>
-                                                <td class="col-md-2">
-                                                    @Html.ActionLink("Detalji", "editStudent", new { id = a.id_student}, new { @class = "btn btn-primary btn-xs btn-grad" })
-                                                    @Html.ActionLink("Odobri", "approveStudent", new { id = a.id_student}, new { @class = "btn btn-info btn-xs btn-grad" })
+                                                @if (a.odobreno != "Nije prijavljeno")
+                                                {
+                                                    <td class="col-md-2">
+                                                        @Html.ActionLink("Detalji", "editStudent", new { id = a.id_student }, new { @class = "btn btn-primary btn-xs btn-grad" })
+                                                        @Html.ActionLink("Odobri", "approveStudent", new { id = a.id_student }, new { @class = "btn btn-info btn-xs btn-grad" })
 
-                                                    @Html.ActionLink("Obriši", "deleteStudent", new { id = a.id_student}, new { @class = "btn btn-danger btn-xs btn-grad" })
-                                                    <br/>
-                                                    <br/>
-                                                    @Html.ActionLink("Ocjena", "gradeStudent", new { id = a.id_student}, new { @class = "btn btn-info btn-xs btn-grad" })
-                                                   
-                                                    @Html.ActionLink("Dnevnik", "dnevnik", new { id = a.id_student}, new { @class = "btn btn-success btn-xs btn-grad" })
-                                                   
-                                                </td>
+                                                        @Html.ActionLink("Obriši", "deleteStudent", new { id = a.id_student }, new { @class = "btn btn-danger btn-xs btn-grad" })
+                                                        <br />
+                                                        <br />
+                                                        @Html.ActionLink("Ocjena", "gradeStudent", new { id = a.id_student }, new { @class = "btn btn-info btn-xs btn-grad" })
+
+                                                        @Html.ActionLink("Dnevnik", "dnevnik", new { id = a.id_student }, new { @class = "btn btn-success btn-xs btn-grad" })
+
+                                                    </td>
+                                                }
+                                                else
+                                                {
+
+                                                    <td class="col-md-2">
+                                                        @Html.ActionLink("Detalji", "editStudent", new { id = a.id_student }, new { @class = "btn btn-primary btn-xs btn-grad" })
+
+                                                        @Html.ActionLink("Obriši", "deleteStudent", new { id = a.id_student }, new { @class = "btn btn-danger btn-xs btn-grad" })
+
+                                                    </td>
+
+                                                }
+
                                             </tr>
+                                        brojac++;
                                         }
+                                       
+                                    }
 
                                     </tbody>
                                 </table>

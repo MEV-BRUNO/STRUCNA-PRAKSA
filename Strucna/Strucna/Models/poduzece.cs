@@ -37,6 +37,7 @@ namespace Strucna.Models
         [Display(Name = "Telefon")]
         public string tel { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
+        [DataType(DataType.EmailAddress)]
         [Display(Name = "Email poduzeća")]
         public string email { get; set; }
 
