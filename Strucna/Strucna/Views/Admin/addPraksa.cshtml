@@ -3,14 +3,15 @@
 @using Strucna.Models
 @using Strucna.ViewModels
 @{
-   
+
     ViewBag.Title = "addPraksa";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
     strucnapraksa baza = new strucnapraksa();
     var listMentora = new List<SelectListItem>();
 
     List<Mentor> lista = baza.Mentori.ToList();
- 
+
 
     foreach (Mentor mentor in lista)
     {
@@ -26,7 +27,7 @@
     var listStudija = new List<SelectListItem>();
 
     List<Studij> list = baza.Smjerovi.ToList();
- 
+
 
     foreach (Studij studij in list)
     {

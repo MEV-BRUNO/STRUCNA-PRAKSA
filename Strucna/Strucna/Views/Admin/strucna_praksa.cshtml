@@ -1,6 +1,7 @@
 ﻿@{
 
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    int brojac = 1;
 
 }
 @using Strucna.Models
@@ -76,25 +77,27 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach(var p in Model)
-                                        {
-                                           
-                                            <tr>
-                                                <td class="col-md-1">@p.id_praksa</td>
-                                                <td class="col-md-2">@p.naziv</td>
-                                                <td class="col-md-2">@p.studij</td>
-                                               
-                                                <td class="col-md-2">@p.mentor</td>
-                                                <td class="col-md-1">Od:@p.datoum_od.Substring(0,10)<br>Do:@p.datoum_do.Substring(0, 10)</td>
-                                                <td class="col-md-1">@p.zavrsena</td>
-                                                <td class="col-md-2">
-                                                    @Html.ActionLink("Uredi", "editPraksa", new { @id = @p.id_praksa }, new { @class = "btn btn-primary btn-xs btn-grad" }) 
-                                                    @Html.ActionLink("Obriši", "deletePraksa", new { @id = @p.id_praksa }, new { @class = "btn btn-danger btn-xs btn-grad" }) 
+                                        @{
+                                            foreach (var p in Model)
+                                            {
+
+                                                <tr>
+                                                    <td class="col-md-1">@brojac</td>
+                                                    <td class="col-md-2">@p.naziv</td>
+                                                    <td class="col-md-2">@p.studij</td>
+
+                                                    <td class="col-md-2">@p.mentor</td>
+                                                    <td class="col-md-1">Od:@p.datoum_od.Substring(0, 10)<br>Do:@p.datoum_do.Substring(0, 10)</td>
+                                                    <td class="col-md-1">@p.zavrsena</td>
+                                                    <td class="col-md-2">
+                                                        @Html.ActionLink("Uredi", "editPraksa", new {@id = @p.id_praksa}, new {@class = "btn btn-primary btn-xs btn-grad"})
+                                                        @Html.ActionLink("Obriši", "deletePraksa", new {@id = @p.id_praksa}, new {@class = "btn btn-danger btn-xs btn-grad"})
 
 
-                                                </td>
-                                            </tr>
-                                         
+                                                    </td>
+                                                </tr>
+                                                brojac++;
+                                            }
                                         }
                                          
                                         </tbody>

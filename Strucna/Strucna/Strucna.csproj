@@ -2238,7 +2238,6 @@
     <Content Include="Views\Admin\popis_studijskih_programa.cshtml" />
     <Content Include="Views\Admin\strucna_praksa.cshtml" />
     <Content Include="Views\Admin\o_praksi.cshtml" />
-    <Content Include="Views\Admin\partial_mentor.cshtml" />
     <Content Include="Views\Admin\poduzeca.cshtml" />
     <Content Include="Views\Admin\dokumenti.cshtml" />
     <Content Include="Views\Login\reg_student.cshtml" />

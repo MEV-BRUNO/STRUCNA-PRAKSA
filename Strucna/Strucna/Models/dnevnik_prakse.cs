@@ -15,7 +15,7 @@ namespace Strucna.Models
         public int id_dnevnik { get; set; }
         public int id_praksa { get; set; }
         public int id_student { get; set; }
-        [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
+        
         [Display(Name = "Redni broj")]
         public int red_broj { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]

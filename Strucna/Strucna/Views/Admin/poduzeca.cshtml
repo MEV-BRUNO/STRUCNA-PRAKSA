@@ -1,7 +1,7 @@
 ﻿@{
 
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-
+    int brojac = 1;
 }
 @using Strucna.Models
 @model IEnumerable<Strucna.Models.Poduzece>
@@ -69,25 +69,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (Poduzece p in Model)
-                        {
-                            <tr>
+                        @{
 
-                                <td class="col-md-1">@p.id_poduzece</td>
-                                <td class="col-md-2">@p.naziv</td>
-                                <td class="col-md-2">@p.adresa </td>
-                                <td class="col-md-1">@p.tel<br>@p.email</td>
-                                <td class="col-md-2">@p.kontakt_osoba</td>
-                                <td class="col-md-2">@p.URL</td>
-                                <td class="col-md-3">
+                            foreach (Poduzece p in Model)
+                            {
 
-                                    @Html.ActionLink("Uredi", "editPoduzeca", new { @id = @p.id_poduzece }, new { @class = "btn btn-primary btn-xs btn-grad" })
-                                    @Html.ActionLink("Detalji", "detailsPoduzeca", new { @id = @p.id_poduzece }, new { @class = "btn btn-success btn-xs btn-grad" })
-                                    @Html.ActionLink("Briši", "deletePoduzeca", new { @id = @p.id_poduzece }, new { @class = "btn btn-danger btn-xs btn-grad" })
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td class="col-md-1">@brojac</td>
+                                    <td class="col-md-2">@p.naziv</td>
+                                    <td class="col-md-2">@p.adresa </td>
+                                    <td class="col-md-1">@p.tel<br>@p.email</td>
+                                    <td class="col-md-2">@p.kontakt_osoba</td>
+                                    <td class="col-md-2">@p.URL</td>
+                                    <td class="col-md-3">
+
+                                        @Html.ActionLink("Uredi", "editPoduzeca", new {@id = @p.id_poduzece}, new {@class = "btn btn-primary btn-xs btn-grad"})
+                                        @Html.ActionLink("Detalji", "detailsPoduzeca", new {@id = @p.id_poduzece}, new {@class = "btn btn-success btn-xs btn-grad"})
+                                        @Html.ActionLink("Briši", "deletePoduzeca", new {@id = @p.id_poduzece}, new {@class = "btn btn-danger btn-xs btn-grad"})
+                                    </td>
+                                </tr>
+                                brojac++;
+                            }
+
                         }
-
                     </tbody>
                 </table>
             </div>

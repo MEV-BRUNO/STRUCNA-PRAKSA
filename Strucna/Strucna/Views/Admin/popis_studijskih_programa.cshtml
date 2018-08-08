@@ -1,7 +1,7 @@
 ﻿@{
 
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-
+    int brojac = 1;
 }
 @using Strucna.Models
 @model IEnumerable<Strucna.Models.Studij>
@@ -70,9 +70,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach(Studij s in Model) { 
+                                        @{
+                                        foreach (Studij s in Model) {
                                             <tr>
-                                                <td class="col-md-1">@s.id_studij</td>
+                                                <td class="col-md-1">@brojac</td>
                                                 <td class="col-md-8">@s.naziv</td>
                                                 <td class="col-md-3">
                                                     
@@ -80,6 +81,8 @@
                                                     @Html.ActionLink("Briši","deleteSmejer",new { @id = @s.id_studij }, new { onclick = "return confirm('Jeste li sigurni da zelite obrisati smjer?');" })
                                                 </td>
                                             </tr>
+                                            brojac++;
+                                        }
                                         }
                                          
                                         </tbody>

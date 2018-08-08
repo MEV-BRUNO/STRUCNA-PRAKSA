@@ -1,7 +1,7 @@
 ﻿@{
 
     Layout = "~/Views/Shared/_LayoutStudent.cshtml";
-
+    int brojac = 1;
 }
 @using Strucna.Models
 @model IEnumerable<Strucna.Models.Dokumenti>
@@ -66,14 +66,19 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach (Dokumenti d in Model) { 
-                        <tr>
-                            <td class="col-md-1">@d.id_dokument</td>
-                            <td class="col-md-8">@d.naziv</td>
-                            <td class="col-md-2">
-                                @Html.ActionLink("Preuzmi", "Download", new { id = d.id_dokument}, new { @class = "btn btn-primary btn-xs btn-grad" })
-                            </td>
-                        </tr>
+                    @{
+
+                        foreach (Dokumenti d in Model)
+                        {
+                            <tr>
+                                <td class="col-md-1">@brojac</td>
+                                <td class="col-md-8">@d.naziv</td>
+                                <td class="col-md-2">
+                                    @Html.ActionLink("Preuzmi", "Download", new {id = d.id_dokument}, new {@class = "btn btn-primary btn-xs btn-grad"})
+                                </td>
+                            </tr>
+                            brojac++;
+                        }
                     }
                     </tbody>
                 </table>

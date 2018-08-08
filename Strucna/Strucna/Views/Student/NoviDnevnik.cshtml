@@ -85,14 +85,7 @@
 
 
                                                         <form method="post" action="">
-                                                            <p>
-
-                                                                @Html.LabelFor(model => model.red_broj, new { @class = "control-label" })
-
-                                                                @Html.EditorFor(model => model.red_broj, new { htmlAttributes = new { @class = "form-control" } })
-                                                                @Html.ValidationMessageFor(model => model.red_broj, "", new { @class = "text-danger" })
-
-                                                            </p>
+                                                          
                                                             <p>
 
                                                                 @Html.LabelFor(model => model.datum, new { @class = "control-label" })
@@ -122,7 +115,7 @@
 
 
 
-                                                            <button class="btn btn-danger">Uredi</button>
+                                                            <button class="btn btn-success">Dodaj</button>
 
                                                         </form>
                                                     </div>

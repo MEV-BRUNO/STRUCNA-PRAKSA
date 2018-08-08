@@ -3,7 +3,7 @@
 @{
 
     Layout = "~/Views/Shared/_LayoutStudent.cshtml";
-
+   
 }
 
 <!DOCTYPE html>
@@ -80,27 +80,32 @@
                                     </thead>
                                     <tbody>
 
-                                    @foreach (Dnevnik_prakse d in Model)
-                                    {
-
-                                        if (d.id_student == (int)Session["UserID"])
+                                    @{
+                                        int brojac = 1;
+                                        foreach (Dnevnik_prakse d in Model)
                                         {
-                                            
+
+                                            if (d.id_student == (int) Session["UserID"])
+                                            {
 
 
 
-                                        <tr>
 
-                                            <td class="col-md-1">@d.red_broj</td>
-                                            <td class="col-md-4">@d.naslov</td>
-                                            <td class="col-md-4">@d.datum</td>
-                                            <td class="col-md-3">
+                                                <tr>
 
-                                             @Html.ActionLink("Uredi", "EditDnevnik", new { id = d.id_dnevnik},new { @class="btn btn-success btn-s btn-grad"})
-                                        </tr>
+                                                    <td class="col-md-1">@brojac</td>
+                                                    <td class="col-md-4">@d.naslov</td>
+                                                    <td class="col-md-4">@d.datum.ToString().Substring(0, 10)</td>
+                                                    <td class="col-md-3">
+
+                                                    @Html.ActionLink("Uredi", "EditDnevnik", new {id = d.id_dnevnik}, new {@class = "btn btn-success btn-s btn-grad"})
+                                                </tr>
+                                                brojac++;
+                                            }
+
+
+
                                         }
-
-
 
                                     }
                                     </tbody>
