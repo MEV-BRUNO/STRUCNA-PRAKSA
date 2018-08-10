@@ -98,7 +98,9 @@
                                                         @Html.ActionLink("Detalji", "editStudent", new { id = a.id_student }, new { @class = "btn btn-primary btn-xs btn-grad" })
                                                         @Html.ActionLink("Odobri", "approveStudent", new { id = a.id_student }, new { @class = "btn btn-info btn-xs btn-grad" })
 
-                                                        @Html.ActionLink("Obriši", "deleteStudent", new { id = a.id_student }, new { @class = "btn btn-danger btn-xs btn-grad" })
+                                                       
+                                                        @Html.ActionLink("Obriši", "deleteStudent", new { id = a.id_student }, new { onclick = "return confirm('Jeste li sigurni da zelite obrisati studenta?');", @class = "btn btn-danger btn-xs btn-grad" })
+
                                                         <br />
                                                         <br />
                                                         @Html.ActionLink("Ocjena", "gradeStudent", new { id = a.id_student }, new { @class = "btn btn-info btn-xs btn-grad" })
@@ -113,7 +115,8 @@
                                                     <td class="col-md-2">
                                                         @Html.ActionLink("Detalji", "editStudent", new { id = a.id_student }, new { @class = "btn btn-primary btn-xs btn-grad" })
 
-                                                        @Html.ActionLink("Obriši", "deleteStudent", new { id = a.id_student }, new { @class = "btn btn-danger btn-xs btn-grad" })
+                                             
+                                                        @Html.ActionLink("Obriši", "deleteStudent", new { id = a.id_student }, new { onclick = "return confirm('Jeste li sigurni da zelite obrisati smjer?');"})
 
                                                     </td>
 

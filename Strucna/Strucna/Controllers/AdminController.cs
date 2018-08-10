@@ -11,6 +11,7 @@ using System.Web.Mvc;
 using Strucna.Baza_povezivanje;
 using Strucna.Models;
 
+
 namespace Strucna.Controllers
 {
     public class AdminController : Controller
@@ -183,126 +184,64 @@ namespace Strucna.Controllers
             List<VratiStudente> lista = new List<VratiStudente>();
             List<Student> listaStudenata = baza.Studenti.ToList();
             List<Poduzece> listaSPoduzeca = baza.Poduzeca.ToList();
-            //foreach (Praksa_student praksa in baza.PraksaStudent)
-            //{
-            //    VratiStudente a = new VratiStudente();
 
-            //    a.datoum_od = praksa.datum_od.ToString();
-            //    a.datoum_do = praksa.datum_do.ToString();
-            //    if (praksa.odobreno == 0)
-            //    {
-            //        a.odobreno = "Ne";
-            //    }
-            //    else
-            //    {
-            //        a.odobreno = "Da";
-            //    }
-
-            //    if (praksa.ocjena == 0)
-            //    {
-            //        a.ocjena = "Neocjenjeno";
-            //    }
-            //    else if (praksa.ocjena == 1)
-            //    {
-            //        a.ocjena = "Pozitivno";
-            //    }
-            //    else if(praksa.ocjena == 2)
-            //    {
-            //        a.ocjena = "Negativno";
-            //    }
-
-            //    foreach (Student student in listaStudenata)
-            //    {
-            //        if (student.id_studnet == praksa.id_student)
-            //        {
-            //            a.id_student = student.id_studnet;
-            //            a.ime = student.ime_prezime;
-
-
-            //        }
-            //    }
-
-            //    foreach (Poduzece poduzece in listaSPoduzeca)
-            //    {
-            //        if (poduzece.id_poduzece == praksa.id_poduzece)
-            //        {
-
-            //            a.poduzece = poduzece.naziv;
-
-
-            //        }
-            //    }
-
-            //    lista.Add(a);
-
-            //}
-           
-            foreach (Student student in listaStudenata)
+            foreach (Praksa_student praksa in baza.PraksaStudent)
             {
                 VratiStudente a = new VratiStudente();
 
-                a.id_student = student.id_studnet;
-                a.ime = student.ime_prezime;
+                a.datoum_od = praksa.datum_od.ToString();
+                a.datoum_do = praksa.datum_do.ToString();
+                if (praksa.odobreno == 0)
+                {
+                    a.odobreno = "Ne";
+                }
+                else
+                {
+                    a.odobreno = "Da";
+                }
 
+                if (praksa.ocjena == 0)
+                {
+                    a.ocjena = "Neocjenjeno";
+                }
+                else if (praksa.ocjena == 1)
+                {
+                    a.ocjena = "Pozitivno";
+                }
+                else if (praksa.ocjena == 2)
+                {
+                    a.ocjena = "Negativno";
+                }
 
-                foreach (Praksa_student praksa in baza.PraksaStudent)
+                foreach (Student student in listaStudenata)
                 {
                     if (student.id_studnet == praksa.id_student)
                     {
-
-                        foreach (Poduzece poduzece in listaSPoduzeca)
-                        {
-                            if (poduzece.id_poduzece == praksa.id_poduzece)
-                            {
-
-                                a.poduzece = poduzece.naziv;
+                        a.id_student = student.id_studnet;
+                        a.ime = student.ime_prezime;
 
 
-                            }
-                        }
-
-                        a.datoum_od = praksa.datum_od.ToString();
-                        a.datoum_do = praksa.datum_do.ToString();
-                        if (praksa.odobreno == 0)
-                        {
-                            a.odobreno = "Ne";
-                        }
-                        else
-                        {
-                            a.odobreno = "Da";
-                        }
-
-                        if (praksa.ocjena == 0)
-                        {
-                            a.ocjena = "Neocjenjeno";
-                        }
-                        else if (praksa.ocjena == 1)
-                        {
-                            a.ocjena = "Pozitivno";
-                        }
-                        else if (praksa.ocjena == 2)
-                        {
-                            a.ocjena = "Negativno";
-                        }
                     }
-                    else
-                    {
-                        a.datoum_od = "---------------";
-                        a.datoum_do = "---------------";
-                        a.odobreno = "Nije prijavljeno";
-                        a.ocjena = "Nije prijavljeno";
-                        a.poduzece = "Nije prijavljeno";
-                    }
-
                 }
 
+                foreach (Poduzece poduzece in listaSPoduzeca)
+                {
+                    if (poduzece.id_poduzece == praksa.id_poduzece)
+                    {
 
-                 
+                        a.poduzece = poduzece.naziv;
+
+
+                    }
+                }
+
                 lista.Add(a);
+
             }
 
-
             return View(lista);
+
+
         }
 
         public ActionResult approveStudent(int id)
@@ -575,6 +514,82 @@ namespace Strucna.Controllers
 
         }
 
+        public ActionResult podaci()
+        {
+
+            List<VratiStudente> lista = new List<VratiStudente>();
+            List<Student> listaStudenata = baza.Studenti.ToList();
+            List<Poduzece> listaSPoduzeca = baza.Poduzeca.ToList();
+            foreach (Student student in listaStudenata)
+            {
+                VratiStudente a = new VratiStudente();
+
+                a.id_student = student.id_studnet;
+                a.ime = student.ime_prezime;
+                a.datoum_od = "---------------";
+                a.datoum_do = "---------------";
+                a.odobreno = "Nije prijavljeno";
+                a.ocjena = "Nije prijavljeno";
+                a.poduzece = "Nije prijavljeno";
+
+                foreach (Praksa_student praksa in baza.PraksaStudent)
+                {
+                    if (student.id_studnet == praksa.id_student)
+                    {
+
+                        foreach (Poduzece poduzece in listaSPoduzeca)
+                        {
+                            if (poduzece.id_poduzece == praksa.id_poduzece)
+                            {
+
+                                a.poduzece = poduzece.naziv;
+
+
+                            }
+                        }
+
+                        a.datoum_od = praksa.datum_od.ToString();
+                        a.datoum_do = praksa.datum_do.ToString();
+                        if (praksa.odobreno == 0)
+                        {
+                            a.odobreno = "Ne";
+                        }
+                        else
+                        {
+                            a.odobreno = "Da";
+                        }
+
+                        if (praksa.ocjena == 0)
+                        {
+                            a.ocjena = "Neocjenjeno";
+                        }
+                        else if (praksa.ocjena == 1)
+                        {
+                            a.ocjena = "Pozitivno";
+                        }
+                        else if (praksa.ocjena == 2)
+                        {
+                            a.ocjena = "Negativno";
+                        }
+
+                       
+                    }
+                     
+                     
+                     
+                   
+                }
+
+                lista.Add(a);
+
+
+            }
+
+
+            return View(lista);
+        }
+
+     
 
 
     }

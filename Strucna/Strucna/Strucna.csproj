@@ -1813,6 +1813,10 @@
     <Content Include="img\hr.gif" />
     <Content Include="img\s07.gif" />
     <Content Include="css\StyleSheet1.css" />
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -2204,6 +2208,7 @@
     <Content Include="assets\plugins\validationengine\test\NanoHTTPD%24HTTPSession.class" />
     <Content Include="assets\plugins\validationengine\test\NanoHTTPD%24Response.class" />
     <Content Include="assets\plugins\validationengine\test\NanoHTTPD.class" />
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -2272,6 +2277,7 @@
     <Content Include="Views\Admin\gradeStudent.cshtml" />
     <Content Include="Views\Admin\addPoduzece.cshtml" />
     <Content Include="Views\Student\cheangePassword.cshtml" />
+    <Content Include="Views\Admin\podaci.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
