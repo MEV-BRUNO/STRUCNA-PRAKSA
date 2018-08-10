@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using Strucna.Baza_povezivanje;
 using Strucna.Models;
+using Rotativa.MVC;
 
 
 namespace Strucna.Controllers
@@ -526,8 +527,8 @@ namespace Strucna.Controllers
 
                 a.id_student = student.id_studnet;
                 a.ime = student.ime_prezime;
-                a.datoum_od = "---------------";
-                a.datoum_do = "---------------";
+                a.datoum_od = "00/00/0000";
+                a.datoum_do = "00/00/0000";
                 a.odobreno = "Nije prijavljeno";
                 a.ocjena = "Nije prijavljeno";
                 a.poduzece = "Nije prijavljeno";
@@ -589,8 +590,16 @@ namespace Strucna.Controllers
             return View(lista);
         }
 
-     
+        
+        public ActionResult PrintStudnets()
+        {
+            ActionAsPdf resoult = new ActionAsPdf("podaci")
+            {
+                FileName = Server.MapPath("~/Content/Invoice.pdf")
+            };
 
+            return resoult;
+        }
 
     }
 }

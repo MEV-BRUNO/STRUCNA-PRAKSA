@@ -42,6 +42,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+   
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -63,16 +64,17 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Podaci iz baze
+                            <button id="exportButton" class="btn btn-lg btn-danger clearfix"><span class="fa fa-file-pdf-o"></span> Export to PDF</button>
                         </div>
 
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <table class="table table-striped table-bordered table-hover" id="exportTable">
                                     <thead>
                                         <tr>
                                             <th>#</th>
                                             <th>Prezime i ime studenta</th>
-                                            <th>Naziv poduzeća</th>
+                                            <th>Poduzece</th>
                                             <th>Trajanje</th>
                                             <th>Odobrena</th>
                                             <th>Ocjena</th>
@@ -85,24 +87,24 @@
                                             foreach (VratiStudente a in Model)
                                             {
 
-                                        <tr>
-                                            <td class="col-md-1">@brojac</td>
-                                            <td class="col-md-3">@a.ime  </td>
-                                            <td class="col-md-2">@a.poduzece</td>
-                                            <td class="col-md-2">Od: @a.datoum_od.Substring(0, 10)<br>Do: @a.datoum_do.Substring(0, 10)</td>
-                                            <td class="col-md-1">@a.odobreno</td>
-                                            <td class="col-md-1">@a.ocjena</td>
+                                                <tr>
+                                                    <td class="col-md-1">@brojac</td>
+                                                    <td class="col-md-3">@a.ime  </td>
+                                                    <td class="col-md-2">@a.poduzece</td>
+                                                    <td class="col-md-2"> Od: @a.datoum_od.Substring(0, 10)<br> Do: @a.datoum_do.Substring(0, 10)</td>
+                                                    <td class="col-md-1">@a.odobreno</td>
+                                                    <td class="col-md-1">@a.ocjena</td>
 
 
-                                            <td class="col-md-2">
+                                                    <td class="col-md-2">
 
-                                                @Html.ActionLink("Obriši", "deleteStudent", new { id = a.id_student }, new { onclick = "return confirm('Jeste li sigurni da zelite obrisati studenta?');", @class = "btn btn-danger btn-xs btn-grad" })
+                                                        @Html.ActionLink("Obriši", "deleteStudent", new { id = a.id_student }, new { onclick = "return confirm('Jeste li sigurni da zelite obrisati studenta?');", @class = "btn btn-danger btn-xs btn-grad" })
 
-                                            </td>
+                                                    </td>
 
 
 
-                                        </tr>
+                                                </tr>
                                                 brojac++;
                                             }
 
@@ -137,6 +139,68 @@
     <script>
         $(document).ready(function () {
             $('#dataTables-example').dataTable();
+        });
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
+    <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+    <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/jszip.min.js"></script>
+
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $("#exportButton").click(function () {
+                // parse the HTML table element having an id=exportTable
+                var dataSource = shield.DataSource.create({
+                    data: "#exportTable",
+                    schema: {
+                        type: "table",
+                        fields: {
+                           "#": { type: Number },
+                           "Prezime i ime studenta": { type: String },
+                            Poduzece: { type: String },
+                            Trajanje: { type: String },
+                            Odobrena: { type: String },
+                            Ocjena: { type: Number },
+                            Aktivnost: { type: String }
+                        }
+                    }
+                });
+
+                // when parsing is done, export the data to PDF
+                dataSource.read().then(function (data) {
+                    var pdf = new shield.exp.PDFDocument({
+                        author: "PrepBootstrap",
+                        created: new Date()
+                    });
+
+                    pdf.addPage("a4", "portrait");
+
+                    pdf.table(
+                        50,
+                        50,
+                        data,
+                        [
+                            { field: "#", title: "Redni br", width: 50 },
+                            { field: "Prezime i ime studenta", title: "Ime", width: 85 },
+                            { field: "Poduzece", title: "Poduzece", width: 100 },
+                            { field: "Trajanje", title: "Trajanje", width: 100 },
+                            { field: "Odobrena", title: "Odobrena", width: 85 },
+                            { field: "Ocjena", title: "Ocjena", width: 85 },
+ 
+                        ],
+                        {
+                            margins: {
+                                top: 50,
+                                left: 50
+                            }
+                        }
+                    );
+
+                    pdf.saveAs({
+                        fileName: "PrepBootstrapPDF"
+                    });
+                });
+            });
         });
     </script>
     <!-- END PAGE LEVEL SCRIPTS -->
