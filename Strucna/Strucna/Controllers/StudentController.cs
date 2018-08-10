@@ -84,8 +84,9 @@ namespace Strucna.Controllers
 
 
             return View(lista);
-            
+
         }
+
         public ActionResult logout()
         {
             Session["UserID"] = null;
@@ -98,10 +99,11 @@ namespace Strucna.Controllers
             List<Dnevnik_prakse> lista = new List<Dnevnik_prakse>();
             foreach (Dnevnik_prakse dok in baza.Dnevnik)
             {
-                
+
                 lista.Add(dok);
 
             }
+
             return View(lista);
         }
 
@@ -109,7 +111,7 @@ namespace Strucna.Controllers
         {
             List<Student> lista = baza.Studenti.ToList();
             return View(lista);
-    
+
         }
 
         public ActionResult dokumenti()
@@ -129,7 +131,7 @@ namespace Strucna.Controllers
         [HttpPost]
         public ActionResult prijava_prakse(Praksa_student p)
         {
-            int broj = (int)Session["UserID"];
+            int broj = (int) Session["UserID"];
 
             foreach (Praksa_student praksa in baza.PraksaStudent)
             {
@@ -139,14 +141,14 @@ namespace Strucna.Controllers
                     return View();
                 }
             }
-             
+
             Praksa datum = baza.Prakse.SingleOrDefault(s => s.id_praksa == p.id_praksa);
 
 
             p.id_student = broj;
             p.datum_do = datum.datum_do;
             p.datum_od = datum.datum_od;
-           
+
             if (ModelState.IsValid)
             {
 
@@ -162,35 +164,34 @@ namespace Strucna.Controllers
 
 
         }
+
         [HttpGet]
         public ActionResult prijava_studenta()
         {
             Poduzece p = new Poduzece();
-           
+
             return View(p);
         }
 
-         [HttpPost]
+        [HttpPost]
         public ActionResult prijava_studenta(Poduzece p)
-         {
+        {
 
-             List<Praksa> listaPrkse = baza.Prakse.ToList();
+            List<Praksa> listaPrkse = baza.Prakse.ToList();
 
             if (ModelState.IsValid)
             {
-        
+
                 baza.Poduzeca.Add(p);
-            baza.SaveChanges();
+                baza.SaveChanges();
 
                 return RedirectToAction("index_student");
             }
-            else
-            {
-                throw new ArgumentException();
-            }
 
- 
+            return View();
+
         }
+
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -203,7 +204,7 @@ namespace Strucna.Controllers
         public ActionResult Edit(Student s)
         {
 
-            int broj = (int)Session["UserID"];
+            int broj = (int) Session["UserID"];
 
             foreach (Student student in baza.Studenti)
             {
@@ -212,17 +213,14 @@ namespace Strucna.Controllers
                     student.ime_prezime = s.ime_prezime;
                     student.adresa = s.adresa;
                     student.mob = s.mob;
-                    if (s.lozinka != s.ConfirmLozinka)
-                    {
-                        ViewBag.lozinka = "Lozinke nisu iste.";
-                        return View();
-                    }
-                    student.lozinka = s.lozinka;
-                     
-                  
-                     
+                    s.lozinka = student.lozinka;
+
+
                 }
             }
+
+            ModelState["lozinka"].Errors.Clear();
+
             if (ModelState.IsValid)
             {
                 baza.SaveChanges();
@@ -249,7 +247,7 @@ namespace Strucna.Controllers
         public ActionResult EditDnevnik(Dnevnik_prakse d)
         {
 
-            int broj = (int)Session["dnevnikID"];
+            int broj = (int) Session["dnevnikID"];
             Dnevnik_prakse dnevnikPrakseToUpdate = baza.Dnevnik.SingleOrDefault(dp => dp.id_dnevnik == broj);
 
             dnevnikPrakseToUpdate.red_broj = d.red_broj;
@@ -257,22 +255,28 @@ namespace Strucna.Controllers
             dnevnikPrakseToUpdate.opis = d.opis;
 
 
-
+            if (ModelState.IsValid)
+            {
+                
+            
 
             baza.SaveChanges();
 
             return RedirectToAction("dnevnik_prakse");
+            }
+
+            return View();
         }
 
-   
+
 
 
         [HttpGet]
         public ActionResult NoviDnevnik()
         {
-         
 
-                return View();
+
+            return View();
         }
 
         [HttpPost]
@@ -280,7 +284,7 @@ namespace Strucna.Controllers
         {
 
             Dnevnik_prakse dpObj = new Dnevnik_prakse();
-            int broj = (int)Session["UserID"];
+            int broj = (int) Session["UserID"];
 
 
             foreach (Praksa_student praksaStudent in baza.PraksaStudent)
@@ -302,16 +306,65 @@ namespace Strucna.Controllers
             dpObj.naslov = dp.naslov;
             dpObj.opis = dp.opis;
 
-
+            if (ModelState.IsValid)
+            {
+                
+          
             baza.Dnevnik.Add(dpObj);
 
             baza.SaveChanges();
 
 
             return RedirectToAction("dnevnik_prakse");
+            }
 
+            return View();
 
 
         }
+
+        [HttpGet]
+        public ActionResult cheangePassword(int id)
+        {
+
+            Student studentToUpdate = baza.Studenti.SingleOrDefault(s => s.id_studnet == id);
+            return View(studentToUpdate);
+        }
+
+        [HttpPost]
+        public ActionResult cheangePassword(Student s)
+        {
+            int broj = (int) Session["UserID"];
+
+            foreach (Student student in baza.Studenti)
+            {
+                if (student.id_studnet == broj)
+                {
+                    if (s.lozinka == null || s.ConfirmLozinka == null)
+                    {
+                        ViewBag.lozinka = "Lozinka je obavezan podatak";
+                        return View();
+                    }
+                    
+                    if (s.lozinka != s.ConfirmLozinka)
+                    {
+                        ViewBag.lozinka = "Lozinke nisu iste.";
+                        return View();
+                    }
+
+                    student.lozinka = s.lozinka;
+
+
+
+                }
+            }
+
+            
+                baza.SaveChanges();
+                return RedirectToAction("osobni_podaci");
+           
+        }
     }
+
+
 }

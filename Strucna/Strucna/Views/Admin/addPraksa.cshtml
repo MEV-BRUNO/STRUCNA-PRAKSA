@@ -94,12 +94,13 @@
                             @Html.LabelFor(model => model.zavrsena)
                             <br />
                             @Html.RadioButtonFor(model => model.zavrsena, 0) Ne
-                            <br />
+                             
                             @Html.RadioButtonFor(model => model.zavrsena, 1) Da
                         </p>
 
                         <button class="btn btn-primary">Dodaj</button>
                     }
+                    <br />
 
                     @Html.ActionLink("Odustani", "strucna_praksa", new { @class = "btn btn-link" })
                 </div>

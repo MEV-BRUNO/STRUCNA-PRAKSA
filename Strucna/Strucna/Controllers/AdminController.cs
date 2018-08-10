@@ -392,17 +392,23 @@ namespace Strucna.Controllers
                 d.put =path+postedFile.FileName;
             }
 
-            if (d == null)
+            if (d.naziv == null)
             {
 
-                return RedirectToAction("dokumenti");
+                return View();
 
             }
+ 
+                
+           
 
             baza.Dokument.Add(d);
             baza.SaveChanges();
 
            return RedirectToAction("dokumenti") ;
+             
+
+             
         }
 
  
@@ -424,6 +430,9 @@ namespace Strucna.Controllers
         [HttpPost]
         public ActionResult editPoduzeca(Poduzece p)
         {
+
+            if (ModelState.IsValid) { 
+
             int broj = (int) Session["editPod"];
             Poduzece poduzeceToUpdate = baza.Poduzeca.SingleOrDefault(s => s.id_poduzece == broj);
             poduzeceToUpdate.naziv = p.naziv;
@@ -438,6 +447,11 @@ namespace Strucna.Controllers
             baza.SaveChanges();
             Session["editPod"] = null;
             return RedirectToAction("poduzeca");
+            }
+            else
+            {
+                return View(p);
+            }
         }
 
         public ActionResult dodajSmjer()
