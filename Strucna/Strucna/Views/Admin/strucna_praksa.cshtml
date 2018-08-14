@@ -91,8 +91,7 @@
                                                     <td class="col-md-1">@p.zavrsena</td>
                                                     <td class="col-md-2">
                                                         @Html.ActionLink("Uredi", "editPraksa", new {@id = @p.id_praksa}, new {@class = "btn btn-primary btn-xs btn-grad"})
-                                                        @Html.ActionLink("Obriši", "deletePraksa", new {@id = @p.id_praksa}, new {@class = "btn btn-danger btn-xs btn-grad"})
-
+                                                    @Html.ActionLink("Obriši", "deletePraksa", new { @id = @p.id_praksa }, new { onclick = "return confirm('Jeste li sigurni da zelite obrisati praksu?');", @class = "btn btn-danger btn-xs btn-grad" })
 
                                                     </td>
                                                 </tr>

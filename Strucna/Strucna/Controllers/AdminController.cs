@@ -452,6 +452,28 @@ namespace Strucna.Controllers
         public ActionResult deleteSmejer(int id)
         {
             Studij studijToDelete = baza.Smjerovi.SingleOrDefault(s => s.id_studij == id);
+            List<Student> listaStudenta = baza.Studenti.ToList();
+            List<Dnevnik_prakse> listaDnevnika = baza.Dnevnik.ToList();
+
+            foreach (Student stud in listaStudenta)
+            {
+                if (stud.id_studij == id)
+                {
+                    foreach (Dnevnik_prakse dnevnikPrakse in listaDnevnika)
+                    {
+                        if (dnevnikPrakse.id_student == stud.id_studnet)
+                        {
+                            baza.Dnevnik.Remove(dnevnikPrakse);
+                        }
+                    }
+                    if(baza.PraksaStudent.SingleOrDefault(p => p.id_student == stud.id_studnet) != null) { 
+                    baza.PraksaStudent.Remove(baza.PraksaStudent.SingleOrDefault(p => p.id_student == stud.id_studnet));
+                    }
+                    baza.Studenti.Remove(stud);
+
+                }
+
+            }
 
             baza.Smjerovi.Remove(studijToDelete);
             baza.SaveChanges();
